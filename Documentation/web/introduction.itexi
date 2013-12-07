@@ -89,7 +89,7 @@ traditions of classical music engraving.
 * Productions::                 Real-life use of LilyPond.
 * Reviews::                     What do people say about it?
 * Text input::                  You write music as text?!
-* Easier editing::              Other ways of working with LilyPond.
+* Editing::              Other ways of working with LilyPond.
 @end menu
 @divEnd
 
@@ -200,7 +200,7 @@ team makes sure that problems are solved quickly.
 Several developers, themselves active LilyPond users, have also
 written tools specifically aimed at making the process of editing
 LilyPond files faster and more effective.  For some examples, see
-@ref{Easier editing}.
+@ref{Editing}.
 
 @divEnd
 @divClass{column-center-bottom}
@@ -1024,7 +1024,7 @@ correctly, when in fact it is working precisely as designed.
 More in-depth information is available in @ref{Manuals}.
 
 
-@subsubheading Easier editing environments
+@subsubheading Editing environments
 
 @imageClickable{lilykde-screenshot-small,png,
   (click to enlarge),lilykde-screenshot,png,right}
@@ -1037,7 +1037,7 @@ projects aimed at making it easier to create LilyPond input files.
 Some editing environments include syntax highlighting, automatic
 command completion, and pre-made templates.  Other programs
 actually provide a GUI which allows direct manipulation of a
-graphical score.  For more information, see @ref{Easier editing}.
+graphical score.  For more information, see @ref{Editing}.
 
 
 
@@ -1045,13 +1045,13 @@ graphical score.  For more information, see @ref{Easier editing}.
 @subheading Where now?
 
 You are now ready to @ref{Download, Download LilyPond}.  Still not
-convinced?  Read about @ref{Easier editing}.
+convinced?  Read about @ref{Editing}.
 
 @divEnd
 
 
-@node Easier editing
-@unnumberedsec Easier editing
+@node Editing
+@unnumberedsec Editing
 
 @ignore
 GNU policy forbids us from linking to non-Free software, so don't
