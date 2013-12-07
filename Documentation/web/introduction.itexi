@@ -30,39 +30,36 @@ traditions of classical music engraving.
 @divClass{link-headings}
 
 @divClass{column-left-top}
-@subheading What LilyPond does
+@subheading Why Use LilyPond?
 
 @itemize
 
 @item
-@ref{Features}: What can LilyPond do?
+@ref{Features}: What sets LilyPond apart?
 
 @item
-@ref{Examples}: I want to see some music!
+@ref{Essay}: Our aesthetic and computational manifest.
 
 @item
 @ref{Freedom}: LilyPond is Free Software.
-
-@item
-@ref{Background}: Our computational aesthetics.
 
 @end itemize
 @divEnd
 
 @divClass{column-right-top}
-@subheading LilyPond in use
+@subheading Real-World LilyPond
 @itemize
+
+@item
+@ref{Examples}: I want to see some music!
 
 @item
 @ref{Productions}: Real-life use of LilyPond.
 
-@item
-@ref{Reviews}: What do people say?
-
 @end itemize
 @divEnd
 
-@divClass{column-center-bottom}
+@divClass{column-left-bottom}
 @subheading How LilyPond works
 @itemize
 
@@ -70,9 +67,25 @@ traditions of classical music engraving.
 @ref{Text input}: You write music as @emph{text}?!
 
 @item
-@ref{Easier editing}: Other ways of working with LilyPond.
+@ref{Editing}: Tools for creating scores with LilyPond.
 
 @end itemize
+@divEnd
+
+@divClass{column-right-bottom}
+@subheading Read more 
+@itemize
+
+@item
+@uref{http://lilypondblog.org,
+Scores of Beauty}: LilyPond Blog
+
+@item
+@ref{Reviews}: What do people say?
+
+@item
+@ref{Publications}: what we wrote, and have had written about us.
+
 @divEnd
 
 @divEnd
