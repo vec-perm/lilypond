@@ -9,7 +9,7 @@
 @macro lilypadOSX
 @warning{These instructions assume that you are using the LilyPond
 application.  If you are using any of the programs described in
-@rweb{Easier editing}, please consult the documentation for
+@rweb{Editing}, please consult the documentation for
 those programs if you have any problems.}
 
 
@@ -80,7 +80,7 @@ may fail to generate an update PDF until you close the original.
 @macro lilypadWindows
 @warning{These instructions assume that you are using the built-in
 LilyPad editor.  If you are using any of the programs described in
-@rweb{Easier editing}, please consult the documentation for
+@rweb{Editing}, please consult the documentation for
 those programs if you have any problems compiling a file.}
 
 
@@ -164,7 +164,7 @@ while it is still being viewed.
 @macro lilypadCommandLine
 @warning{These instructions assume that you are familiar with
 command-line programs.  If you are using any of the programs
-described in @rweb{Easier editing}, please consult the
+described in @rweb{Editing}, please consult the
 documentation for those programs if you have any problems
 compiling a file.}
 

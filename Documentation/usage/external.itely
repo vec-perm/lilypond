@@ -378,7 +378,7 @@ change the path appropriately.  This topic is discussed in
 Other editors (both text and graphical) support LilyPond, but
 their special configuration files are not distributed with
 LilyPond.  Consult their documentation for more information.  Such
-editors are listed in @rweb{Easier editing}.
+editors are listed in @rweb{Editing}.
 
 
 @node Converting from other formats
@@ -691,7 +691,7 @@ confuse @command{etf2ly}.  Sequences of grace notes are ended improperly.
 
 LilyPond itself does not come with support for any other formats,
 but some external tools can also generate LilyPond files.  These
-are listed in @rweb{Easier editing}.
+are listed in @rweb{Editing}.
 
 
 
