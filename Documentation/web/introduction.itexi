@@ -185,15 +185,18 @@ formatting correct right from the start.  It determines spacing by
 itself, and breaks lines and pages to provide a tight and uniform
 layout.  Clashes between lyrics, notes, and chords are resolved
 and slurs and beams are sloped, automatically!
+This is also a result from being a compiled system: LilyPond doesn't
+have to produce an acceptable result in real-time but can take the
+time that is necessary to produce a perfect result.
 
 
 @subsubheading Mix music and text
 
 Put fragments of music into texts without cutting and pasting
 pictures.  Integrate music into @LaTeX{} or HTML seamlessly, or add
-music to OpenOffice.org with OOoLilyPond.  Plugins are also available
-to allow LilyPond code in various blogs and wikis, making online
-collaboration possible.
+music to OpenOffice.org/LibreOffice with OOoLilyPond.  Plugins are
+also available to allow LilyPond code in various blogs and wikis, making
+online collaboration possible.
 
 
 @subsubheading Accessibility
@@ -205,13 +208,19 @@ speech-recognition software to edit LilyPond files.  Even users
 who are totally blind can use screen-reading software to write
 LilyPond files -- an impossible task in graphical-based
 score-writing programs.
+Take the last image on the @ref{Examples} page as a spectacular example.
 
-@subsubheading Enhanced editors
+@subsubheading Editor diversity
 
-Several developers, themselves active LilyPond users, have also
-written tools specifically aimed at making the process of editing
-LilyPond files faster and more effective.  For some examples, see
-@ref{Editing}.
+LilyPond's input files can be created and edited with your favorite
+text editor. But while this is actually possible it is recommended to use
+a dedicated LilyPond editor. Several developers, themselves active LilyPond users, 
+have written tools specifically aimed at making the process of editing
+LilyPond files faster and more effective. This way you are not tied to
+a single user interface but can use different tools for different tasks.
+You can even use a full-fledged LilyPond editor at home and use your
+mobile phone's notepad app to edit the files on the go. For some examples,
+see @ref{Editing}.
 
 
 @divEnd
