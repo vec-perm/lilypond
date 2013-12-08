@@ -280,8 +280,12 @@ power. There already exist several online tools using LilyPond.
 LilyPond runs on all popular platforms: GNU/Linux, MacOS X, and
 Windows.  LilyPond comes with extensive documentation and hundreds
 of example files.  There is an active user community answering
-questions on the lilypond-user mailing list, while the development
-team makes sure that problems are solved quickly.
+questions on the lilypond-user mailing list, offering you friendly
+help. The response time is usually very short, and often brillant
+solutions to reported problems are developed. Thanks to the close
+interaction with the development team such solutions are regularly
+included in LilyPond itself.
+Read more on the @ref{Community} pages.
 
 @subsubheading Free software
 
@@ -292,6 +296,7 @@ It's also free (as in @qq{speech}) software.  It comes with source
 code, and permission to change and copy it.  So, are you irritated
 by a bug, or yearning for a feature? Simply add it yourself, or
 pay someone else to do it.
+Read more on @ref{Freedom}.
 
 
 @divEnd
