@@ -115,8 +115,7 @@ Scores of Beauty}: LilyPond Blog
 @divClass{column-center-top}
 
 
-@subheading Elegance
-@subsubheading Excellent classical engraving
+@subheading Excellent classical engraving
 
 @imageFloat{flat-design,png,right}
 
@@ -131,6 +130,34 @@ best-engraved classical scores.  This is further explained in our
 
 
 
+@divEnd
+
+@divClass{color2}
+@subheading Text input
+
+@imageFloat{lilypond-book,png,right}
+
+@subsubheading Everything is explicit
+
+LilyPond takes ASCII input, which you can produce in your favorite
+text editor, quickly and comfortably.  The input contains all the
+information, so there is no need to remember complex command sequences:
+simply save a file for later reference.
+
+@subsubheading Tweaks are robust and traceable
+
+@subsubheading Text files are robust
+
+@subsubheading Manage your scores with version control
+
+@divEnd
+
+@divClass{color2}
+@subheading Usability
+
+@imageFloat{frescobaldi-lilypond-editor-small,png,right}
+
+
 @subsubheading Effective layout choices
 
 Spend less time with tweaking the output; LilyPond gets the
@@ -139,20 +166,6 @@ itself, and breaks lines and pages to provide a tight and uniform
 layout.  Clashes between lyrics, notes, and chords are resolved
 and slurs and beams are sloped, automatically!
 
-
-@divEnd
-
-@divClass{color2}
-@subheading Ease of use
-
-@imageFloat{lilypond-book,png,right}
-
-@subsubheading Text-based input
-
-LilyPond takes ASCII input, which you can produce in your favorite
-text editor, quickly and comfortably.  The input contains all the
-information, so there is no need to remember complex command sequences:
-simply save a file for later reference.
 
 @subsubheading Mix music and text
 
@@ -173,7 +186,23 @@ who are totally blind can use screen-reading software to write
 LilyPond files -- an impossible task in graphical-based
 score-writing programs.
 
-@subsubheading Extensible design
+@subsubheading Enhanced editors
+
+Several developers, themselves active LilyPond users, have also
+written tools specifically aimed at making the process of editing
+LilyPond files faster and more effective.  For some examples, see
+@ref{Editing}.
+
+
+@divEnd
+
+@divClass{color2}
+
+@subheading Extensible design
+
+@subsubheading Easy management of style sheets
+
+@subsubheading Add your own functions
 
 All settings can be changed to suit your personal typographical
 taste.  If that still is not enough, there is always the built-in
@@ -181,13 +210,27 @@ scripting language Scheme, a dialect of the powerful language
 LISP.  Settings, variables and functions are all documented in the
 comprehensive program reference manual.
 
+
+@subsubheading Create new frontends for LilyPond
+
+E.g. web applications
+
+(Link to productions or similar page).
+
+
 @divEnd
 
 @divClass{color3}
 
 @subheading Environment
 
-@imageFloat{frescobaldi-lilypond-editor-small,png,right}
+@subsubheading Excellent support
+
+LilyPond runs on all popular platforms: GNU/Linux, MacOS X, and
+Windows.  LilyPond comes with extensive documentation and hundreds
+of example files.  There is an active user community answering
+questions on the lilypond-user mailing list, while the development
+team makes sure that problems are solved quickly.
 
 @subsubheading Free software
 
@@ -199,23 +242,6 @@ code, and permission to change and copy it.  So, are you irritated
 by a bug, or yearning for a feature? Simply add it yourself, or
 pay someone else to do it.
 
-
-@subsubheading Excellent support
-
-LilyPond runs on all popular platforms: GNU/Linux, MacOS X, and
-Windows.  LilyPond comes with extensive documentation and hundreds
-of example files.  There is an active user community answering
-questions on the lilypond-user mailing list, while the development
-team makes sure that problems are solved quickly.
-
-
-@subsubheading Enhanced editors
-
-
-Several developers, themselves active LilyPond users, have also
-written tools specifically aimed at making the process of editing
-LilyPond files faster and more effective.  For some examples, see
-@ref{Editing}.
 
 @divEnd
 @divClass{column-center-bottom}
