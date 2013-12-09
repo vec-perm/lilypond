@@ -38,6 +38,37 @@ our @ref{Text input}.}
 
 @divClass{link-headings}
 
+@divClass{column-center-top}
+@subheading Before you proceed ...
+
+... you should be aware of some facts and concepts.
+
+LilyPond is a @strong{command line application} translating files written in
+LilyPond's music description language into graphical
+scores.  It does @strong{not} constitute a working environment.  What you will be
+working with for entering your scores is either a @emph{text editor} of your
+choice, or a dedicated editing tool for LilyPond files.
+
+If you want you can go to @ref{Text input} and learn more about LilyPond's
+input language concept.
+
+@subsubheading I'm new to LilyPond and don't have a dedicated editor yet
+
+If you don't already have an editing environment for LilyPond you should
+go to @ref{Editing} now. Apart from getting information on the editing
+concept you'll find a list of known editors. For beginners it is
+recommended to download and install either @strong{Frescobaldi} or
+@strong{Denemo}. Both can take care of installing LilyPond for you.
+
+@subsubheading I'm already a LilyPond user and just want a new version
+
+However, if you already have and editing environment and simply want
+to install a new LilyPond version you can proceed below.
+
+
+@divEnd
+
+
 @divClass{column-left-top}
 @subheading For users
 
