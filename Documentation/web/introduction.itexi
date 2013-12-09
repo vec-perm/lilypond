@@ -1179,28 +1179,6 @@ socres, but with different characteristics each.
 
 
 @divClass{column-center-top}
-@subheading LilyPondTool
-
-@imageClickable{lilypondtool-2.12-screenshot-400wide,png,
-  (click to enlarge),lilypondtool-2.12-screenshot,png,right}
-
-@sourceimage{logo-linux,,,}
-@sourceimage{logo-freebsd,,,}
-@sourceimage{logo-macosx,,,}
-@sourceimage{logo-windows,,,}
-
-@uref{http://lilypondtool.organum.hu}
-
-Created as a plugin for the
-@uref{http://www.jedit.org,jEdit} text editor,
-LilyPondTool is one of the most feature-rich text-based tools for
-editing LilyPond scores.  Its features include a Document Wizard
-with lyrics support to set up documents easier, and embedded PDF
-viewer with advanced point-and-click support.
-
-@divEnd
-
-@divClass{column-center-top}
 @subheading Frescobaldi
 
 @imageClickable{frescobaldi-lilypond-editor-small,png,
@@ -1400,6 +1378,15 @@ language.
 @subheading Other programs not being actively developed
 
 @itemize
+
+@item
+@imageClickable{lilypondtool-2.12-screenshot-400wide,png,
+  (click to enlarge),lilypondtool-2.12-screenshot,png,right}
+
+@uref{http://lilypondtool.blogspot.de/, LilyPondTool} is a jEdit plugin
+and one of the most feature-rich environments available. @uref{http://jedit.org, jEdit} is a
+Java based multi-purpose editor that is available on all platforms that
+can run Java. Unfortunately development of LilyPondTool has been abandoned.
 
 @item
 @uref{http://lilykde.googlecode.com/,LilyKDE} has been replaced by
