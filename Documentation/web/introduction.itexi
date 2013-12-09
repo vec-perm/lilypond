@@ -1159,8 +1159,14 @@ In particular, don't link to:
 
 @end ignore
 
+@divClass{heading-center}
+
+@heading Editing LilyPond scores
+
+@divEnd
+
 @divClass{column-center-top}
-@subheading Editing LilyPond scores
+@subheading Introduction
 
 As LilyPond is a @strong{command line tool} there is no such thing as a
 “LilyPond program” you could open. Instead you edit plain text files
