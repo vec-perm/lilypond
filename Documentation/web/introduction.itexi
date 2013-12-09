@@ -1162,6 +1162,25 @@ In particular, don't link to:
 @end ignore
 
 @divClass{column-center-top}
+@subheading Editing LilyPond scores
+
+As LilyPond is a @strong{command line tool} there is no such thing as a
+“LilyPond program” you could open. Instead you edit plain text files
+which contain the musical content described in LilyPond's input
+language (see @ref{Text input}). For this you can either use the text
+editor of your choice or one of the dedicated tools described below.
+
+To get a first impression it may be useful to check out one of the
+online tools in a later section. But the most complete solutions
+suggested for beginners are @emph{Frescobaldi} and @emph{Denemo},
+both of which offer complete environments for your work with LilyPond
+socres, but with different characteristics each.
+
+
+@divEnd
+
+
+@divClass{column-center-top}
 @subheading Tunefl
 
 @sourceimage{logo-linux,,,}
