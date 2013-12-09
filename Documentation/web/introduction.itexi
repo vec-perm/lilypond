@@ -1179,23 +1179,6 @@ socres, but with different characteristics each.
 
 
 @divClass{column-center-top}
-@subheading Tunefl
-
-@sourceimage{logo-linux,,,}
-@sourceimage{logo-freebsd,,,}
-@sourceimage{logo-macosx,,,}
-@sourceimage{logo-windows,,,}
-
-@uref{http://www.tunefl.com}
-
-With tunefl you can typeset your scores directly online
-without needing to install lilypond locally. It allows
-trying out all the program's features using a convenient
-web interface.
-
-@divEnd
-
-@divClass{column-center-top}
 @subheading LilyPondTool
 
 @imageClickable{lilypondtool-2.12-screenshot-400wide,png,
@@ -1255,6 +1238,23 @@ with the Denemo file, so that users can continue to edit graphically.
 Moving the cursor in the LilyPond text moves the cursor in the graphical
 view, and any syntax errors in your LilyPond tweaks are highlighted in
 the text view when printed from there.
+
+@divEnd
+
+@divClass{column-center-top}
+@subheading Tunefl
+
+@sourceimage{logo-linux,,,}
+@sourceimage{logo-freebsd,,,}
+@sourceimage{logo-macosx,,,}
+@sourceimage{logo-windows,,,}
+
+@uref{http://www.tunefl.com}
+
+With tunefl you can typeset your scores directly online
+without needing to install lilypond locally. It allows
+trying out all the program's features using a convenient
+web interface.
 
 @divEnd
 
