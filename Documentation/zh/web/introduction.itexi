@@ -603,7 +603,7 @@ lovers.
 @divClass{column-center-bottom}
 @subheading 然后呢？
 
-Still not convinced?  Read some of our users' @ref{Reviews}.
+Not convinced yet?  Read some of our users' @ref{Reviews}.
 If you've already decided to try LilyPond, first read about our
 @ref{Text input}.
 @divEnd
@@ -1275,7 +1275,7 @@ lilypond notes.
 
 You are now ready to @ref{Download, Download LilyPond}.
 
-Still not convinced?  Many composers, musicians, and conductors
+Not convinced yet?  Many composers, musicians, and conductors
 have learned how to write music in our input format.  Experienced
 users even report that they can enter a full score in LilyPond
 faster than with a piano keyboard or mouse+GUI!  Perhaps you would

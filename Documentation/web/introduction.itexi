@@ -303,7 +303,7 @@ Read more on @ref{Freedom}.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Still not convinced?  Look at some specific @ref{Examples}.  If you've
+Not convinced yet?  Look at some specific @ref{Examples}.  If you've
 already decided to try LilyPond, first read about our
 @ref{Text input}.
 @divEnd
@@ -327,7 +327,7 @@ please progress to @ref{Essay}.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Still not convinced?  Read about some of our users'
+Not convinced yet?  Read about some of our users'
 @ref{Productions} and sheet music.  If you've already decided to
 try LilyPond, first read about our @ref{Text input}.
 @divEnd
@@ -437,7 +437,7 @@ or scholarships.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Still not convinced?  Read our extensive essay about our engraving
+Not convinced yet?  Read our extensive essay about our engraving
 philosophy in @ref{Background}.  If you've already decided to try
 LilyPond, first read about our @ref{Text input}.
 @divEnd
@@ -576,7 +576,7 @@ contributed by Hu Haipeng, a blind composer.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Still not convinced?  LilyPond is Free software, granting you
+Not convinced yet?  LilyPond is Free software, granting you
 @ref{Freedom}.  If you've already decided to try LilyPond, first
 read about our @ref{Text input}.
 @divEnd
@@ -709,7 +709,7 @@ lovers.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Still not convinced?  Read some of our users' @ref{Reviews}.
+Not convinced yet?  Read some of our users' @ref{Reviews}.
 If you've already decided to try LilyPond, first read about our
 @ref{Text input}.
 @divEnd
@@ -1453,7 +1453,7 @@ lilypond notes.
 
 You are now ready to @ref{Download, Download LilyPond}.
 
-Still not convinced?  Many composers, musicians, and conductors
+Not convinced yet?  Many composers, musicians, and conductors
 have learned how to write music in our input format.  Experienced
 users even report that they can enter a full score in LilyPond
 faster than with a piano keyboard or mouse+GUI!  Perhaps you would
