@@ -1185,14 +1185,34 @@ socres, but with different characteristics each.
   (click to enlarge),frescobaldi-lilypond-editor,png,right}
 
 @sourceimage{logo-linux,,,}
-@sourceimage{logo-freebsd,,,}
+@sourceimage{logo-macosx,,,}
 @sourceimage{logo-windows,,,}
 
 @uref{http://www.frescobaldi.org}
 
-Frescobaldi is lightweight, yet powerful LilyPond music and text editor
-with a built-in PDF viewer.  It is easy to use and will run on all major
-operating systems (GNU/Linux, Mac OS X and Windows).
+@strong{Frescobaldi} is a lightweight, yet powerful LilyPond music and
+text editor with a built-in PDF viewer.  It is easy to use and will run
+on all major operating systems (GNU/Linux, Mac OS X and Windows).
+
+While offering many convenience and editing tools it still
+is a @emph{text} editor. It gives you access to every detail of LilyPond's
+input language but you are therefore responsible to edit this yourself.
+Frescobaldi provides access to LilyPond's documentation inside the
+working environment.
+
+Frescobaldi offers functions such as Score Wizard,
+Quick Insert or Music functions (transpose, scale rhythms etc.) and
+two-way point-and-click in particular that allows you to switch
+between the input file and the resulting notation without having to
+search through the files.
+
+Frescobaldi 2.0.12 and later can install LilyPond for you if necessary,
+so downloading and installing it should get you started right away.
+
+The latest stable release can be found @uref{https://github.com/wbsoft/frescobaldi/releases, here} and includes
+a full Windows installer as well as a source distribution for GNU/Linux
+and Mac OS X. For installation instructions please refer to 
+@uref{http://www.frescobaldi.org/download, this page}.
 
 @divEnd
 
