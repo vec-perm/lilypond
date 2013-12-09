@@ -1224,6 +1224,7 @@ and Mac OS X. For installation instructions please refer to
 
 @divEnd
 
+
 @divClass{column-center-top}
 @subheading Denemo
 
@@ -1235,15 +1236,25 @@ and Mac OS X. For installation instructions please refer to
 
 @uref{http://denemo.org}
 
-Denemo is a graphical editor which generates LilyPond source code,
-and also allows audio playback.  It allows users to view the
-LilyPond source code in parallel to the graphical view.  Extra
-LilyPond tweaks can be attached to notes, chords etc. and are stored
-with the Denemo file, so that users can continue to edit graphically.
+@strong{Denemo} is a graphical editor that internally uses LilyPond for
+creating its output. Opposed to Frescobaldi you'll enter your music in
+a graphical environment without @emph{necessarily} having to deal with
+LilyPond's input language. Extra LilyPond tweaks can be attached to notes,
+chords etc. and are stored with the Denemo file, so that users can continue
+to edit graphically. However, Denemo also gives you access to the raw input
+files to edit them directly but this may partially cause conflicts with
+the graphical editing.
 
-Moving the cursor in the LilyPond text moves the cursor in the graphical
-view, and any syntax errors in your LilyPond tweaks are highlighted in
-the text view when printed from there.
+Denemo has been developed with particular attention to music entry,
+also through MIDI. Moving the cursor in the LilyPond text moves the cursor
+in the graphical view, and any syntax errors in your LilyPond tweaks are
+highlighted in the text view when printed from there.
+
+Denemo already includes a version of LilyPond that will automatically be
+installed with it. But you can later use any LilyPond version with Denemo
+that you might install yourself.
+and can be obtained from its @uref{http://www.denemo.org/downloads-page/,
+Downloads} page.
 
 @divEnd
 
