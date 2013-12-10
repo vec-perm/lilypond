@@ -9,6 +9,12 @@
 
 @include included/generating-output.itexi
 
+@macro warningTextBased
+@warning{LilyPond is a @strong{text-based} music engraver; it is
+more similar to a programming language than a graphical score
+editing program.  Before downloading LilyPond, please read about
+our @ref{Text input}.}
+@end macro
 
 @node Download
 @unnumbered Download
@@ -26,6 +32,7 @@
   @heading Downloads for LilyPond @versionStable
 @end ifset
 
+@warningTextBased
 
 @divEnd
 
@@ -158,6 +165,10 @@ acknowledged.
 
 @node Unix
 @unnumberedsec Unix
+
+@divClass{heading-center}
+@warningTextBased
+@divEnd
 
 @divClass{column-center-top}
 @subheading Generic Packages or Distribution-Specific Packages?
@@ -302,6 +313,10 @@ acknowledged.
 
 @node MacOS X
 @unnumberedsec MacOS X
+
+@divClass{heading-center}
+@warningTextBased
+@divEnd
 
 @divClass{column-left-top}
 @subheading Packages
@@ -448,6 +463,10 @@ acknowledged.
 @node Windows
 @unnumberedsec Windows
 
+@divClass{heading-center}
+@warningTextBased
+@divEnd
+
 @divClass{column-left-top}
 @subheading Packages
 
@@ -575,6 +594,10 @@ acknowledged.
 @node Source
 @unnumberedsec Source
 
+@divClass{heading-center}
+@warningTextBased
+@divEnd
+
 @warning{We @strong{do not} recommend that you attempt to build
 LilyPond yourself; almost all user needs are better met with the
 pre-built version.}
@@ -600,6 +623,10 @@ Instructions are listed in @rcontrib{Compiling}.
 
 @node Old downloads
 @unnumberedsec Old downloads
+
+@divClass{heading-center}
+@warningTextBased
+@divEnd
 
 @divClass{column-center-top}
 @subheading All versions
