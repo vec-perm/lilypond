@@ -1229,19 +1229,37 @@ Downloads} page.
 @divEnd
 
 @divClass{column-center-top}
-@subheading Tunefl
+@subheading Web frontends
 
-@sourceimage{logo-linux,,,}
-@sourceimage{logo-freebsd,,,}
-@sourceimage{logo-macosx,,,}
-@sourceimage{logo-windows,,,}
+As LilyPond is a command line tool it is possible to integrate it in a web
+application and build a frontend that internally calls LilyPond to generate
+web output. Such web applications are operating system independent by nature.
+
+@subsubheading Tunefl
 
 @uref{http://www.tunefl.com}
 
-With tunefl you can typeset your scores directly online
+With @emph{tunefl} you can typeset scores fragments directly online
 without needing to install lilypond locally. It allows
 trying out all the program's features using a convenient
 web interface.
+
+@subsubheading LilyBin
+
+@uref{http://www.lilybin.com}
+
+Other than @emph{tunefl}, @emph{LilyBin} works on full page scores. Edit them
+with an interface offering access to the full LilyPond input file.
+Create scores, download them as PDF and share them with others.
+
+@subsubheading Schikker's List
+
+@uref{http://lilypond.org/schikkers}
+
+@emph{Schikker's List} is a -- still experimental -- online editor allowing you to
+insert and edit music with a graphical interface and see the corresponding
+LilyPond code. Intended as an introduction to get in touch with LilyPond's
+text input.
 
 @divEnd
 
