@@ -1164,6 +1164,15 @@ which contain the musical content described in LilyPond's input
 language (see @ref{Text input}). We recommend using one of the
 dedicated tools described below.
 
+After descriptions of @emph{Frescobaldi} and @emph{Denemo}, two full-fledged
+editing environments you will find sections about
+@ref{editing-web-frontends,Web frontends}
+for getting in touch with LilyPond, 
+General purpose @ref{editing-text-editors,Text editors} with specific support
+for LilyPond,
+Programs that can @ref{editing-lilypond-export,export to LilyPond} and
+@ref{editing-inactive-programs,Outdated programs} that aren't actively
+developed anymore.
 
 @divEnd
 
@@ -1229,6 +1238,7 @@ Downloads} page.
 @divEnd
 
 @divClass{column-center-top}
+@anchor{editing-web-frontends}
 @subheading Web frontends
 
 As LilyPond is a command line tool it is possible to integrate it in a web
@@ -1264,6 +1274,7 @@ text input.
 @divEnd
 
 @divClass{column-center-top}
+@anchor{editing-text-editors}
 @subheading Text editors
 
 @sourceimage{logo-linux,,,}
@@ -1314,6 +1325,7 @@ using the extensions available at:
 @divEnd
 
 @divClass{column-center-top}
+@anchor{editing-lilypond-export}
 @subheading Programs that can export LilyPond code
 
 
@@ -1401,7 +1413,7 @@ language.
 @divEnd
 
 @divClass{column-center-top}
-
+@anchor{editing-inactive-programs}
 @subheading Other programs not being actively developed
 
 @itemize
