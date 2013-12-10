@@ -32,8 +32,6 @@ our @ref{Text input}.}
   @heading Downloads for LilyPond @versionStable
 @end ifset
 
-@warningTextBased
-
 @divEnd
 
 @divClass{link-headings}
