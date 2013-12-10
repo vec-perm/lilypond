@@ -101,12 +101,12 @@ Scores of Beauty}: Follow LilyPond blog!
 * Features::                    What can LilyPond do?
 * Background::                  Computational aesthetics.
 * Freedom::                     Freedom and the GPL.
+* Text input::                  You write music as text?!
+* Editing::                     Tools for creating scores with LilyPond.
 * Examples::                    I want to see some music!
 * Productions::                 Real-life use of LilyPond.
 * Appliances::                  What people did with LilyPond.
 * Reviews::                     What do people say about it?
-* Text input::                  You write music as text?!
-* Editing::              Other ways of working with LilyPond.
 @end menu
 @divEnd
 
@@ -437,6 +437,475 @@ LilyPond, first read about our @ref{Text input}.
 @divEnd
 
 
+@node Text input
+@unnumberedsec Text input
+
+@c TRANSLATORS, so far it's mostly from
+@c http://lilypond.org/web/switch/howto
+
+@subheading @qq{Compiling} Music
+
+@imageClickable{nereid-shot-small,png, (click to enlarge), nereid-shot,png, right}
+
+LilyPond is a @emph{compiled} system: it is run on a text file
+describing the music.  The resulting output is viewed on-screen or
+printed.  In some ways, LilyPond is more similar to a programming
+language than graphical score editing software.
+
+You do not write music by dragging notes from a graphical toolbar
+and placing them on a dynamically refreshing score; you write
+music by typing text.  This text is interpreted (or @qq{compiled})
+by LilyPond, which produces beautifully engraved sheet music.
+
+People accustomed to graphical user interfaces might need to learn
+a new way of working, but the results are definitely worth it!
+
+@warning{We present a quick overview of our text input -- it's not
+as complicated as it sounds!  Don't worry about understanding
+every detail in these examples; our beginner documentation covers
+everything at a much more gradual pace.}
+
+
+@subsubheading It's as simple as A B C
+
+Notes are encoded with letters and numbers.  Special commands are
+entered with backslashes.
+
+@imageFloat{text-input-1-annotate,png,center}
+@imageFloat{text-input-1-output,png,center}
+
+Alterations are made with different names: add @w{@code{-is}} for
+sharp, and @w{@code{-es}} for flat (these are Dutch note names, other
+languages are available).  LilyPond figures out where to put
+accidentals.
+
+@imageFloat{text-input-2-annotate,png,center}
+@imageFloat{text-input-2-output,png,center}
+
+
+@subsubheading Pop music
+
+Put chords and lyrics together to get a lead sheet:
+
+@imageFloat{text-input-pop-annotate,png,center}
+@imageFloat{text-input-pop-output,png,center}
+
+
+
+@subsubheading Orchestral parts
+
+The input file contains the notes of piece of music.  Score and
+parts can be made from a single input file, so that changing a
+note always affects the score and parts.  To be able to include
+the same music in multiple places, the music is assigned to a
+@qq{variable} (a name).
+
+@imageFloat{text-input-parts-both-annotate,png,center}
+
+
+This variable is then used in a single part (here transposed, with
+condensed rests spanning several measures):
+
+@imageFloat{text-input-parts-single-annotate,png,center}
+@imageFloat{text-input-parts-single-output,png,center}
+
+
+The same variable is used in the full score (here in concert
+pitch):
+
+@imageFloat{text-input-score-annotate,png,center}
+@imageFloat{text-input-score-output,png,center}
+
+
+@subsubheading Beginner Documentation
+
+We realize that many users find this way of entering music a bit
+odd.  For this reason, we have written extensive documentation to
+help new users, beginning with @ref{Learning}.  The Learning
+Manual is the best place to start, as many questions are answered
+before they come up!
+
+Please read the Learning Manual before complaining about bugs!
+New users occasionally believe that LilyPond is not working
+correctly, when in fact it is working precisely as designed.
+
+More in-depth information is available in @ref{Manuals}.
+
+
+@subsubheading Editing environments
+
+@imageClickable{lilykde-screenshot-small,png,
+  (click to enlarge),lilykde-screenshot,png,right}
+
+LilyPond is primarily concerned with producing top-quality
+engraved sheet music; creating a Graphical User Interface (GUI)
+would distract us from this goal.  However, there are other
+projects aimed at making it easier to create LilyPond input files.
+
+Some editing environments include syntax highlighting, automatic
+command completion, and pre-made templates.  Other programs
+actually provide a GUI which allows direct manipulation of a
+graphical score.  For more information, see @ref{Editing}.
+
+
+
+@divClass{column-center-bottom}
+@subheading Where now?
+
+You are now ready to @ref{Download, Download LilyPond}.  Still not
+convinced?  Read about @ref{Editing}.
+
+@divEnd
+
+
+@node Editing
+@unnumberedsec Editing
+
+@ignore
+GNU policy forbids us from linking to non-Free software, so don't
+add such links.
+
+In particular, don't link to:
+- the LilyPond bundle for TextMate (a commercial editor for MacOS).
+
+@end ignore
+
+@divClass{heading-center}
+
+@heading Editing LilyPond scores
+
+@divEnd
+
+@divClass{column-center-top}
+@subheading Introduction
+
+As LilyPond is a @strong{command line tool} there is no such thing as a
+“LilyPond program” you could open. Instead you edit text files
+which contain the musical content described in LilyPond's input
+language (see @ref{Text input}). We recommend using one of the
+dedicated tools described below.
+
+After descriptions of @emph{Frescobaldi} and @emph{Denemo}, two full-fledged
+editing environments you will find sections about
+@ref{editing-web-frontends,Web frontends}
+for getting in touch with LilyPond, 
+General purpose @ref{editing-text-editors,Text editors} with specific support
+for LilyPond,
+Programs that can @ref{editing-lilypond-export,export to LilyPond} and
+@ref{editing-inactive-programs,Outdated programs} that aren't actively
+developed anymore.
+
+@divEnd
+
+
+@divClass{column-center-top}
+@subheading Frescobaldi
+
+@imageClickable{frescobaldi-lilypond-editor-small,png,
+  (click to enlarge),frescobaldi-lilypond-editor,png,right}
+
+@sourceimage{logo-linux,,,}
+@sourceimage{logo-macosx,,,}
+@sourceimage{logo-windows,,,}
+
+@uref{http://www.frescobaldi.org}
+
+@strong{Frescobaldi} is a lightweight, yet powerful LilyPond music and
+text editor with a built-in PDF viewer.  It is easy to use and will run
+on all major operating systems (GNU/Linux, Mac OS X and Windows).
+It gives you access to every detail of LilyPond's input language.
+
+Frescobaldi offers functions such as Score Wizard,
+Quick Insert or Music functions (transpose, scale rhythms etc.) and
+two-way point-and-click in particular that allows you to switch
+between the input file and the resulting notation without having to
+search through the files.
+
+Frescobaldi 2.0.12 and later can install LilyPond for you if necessary,
+so downloading and installing it should get you started right away.
+
+The latest stable release can be found @uref{https://github.com/wbsoft/frescobaldi/releases, here} and includes
+a full Windows installer as well as a source distribution for GNU/Linux
+and Mac OS X. For installation instructions please refer to 
+@uref{http://www.frescobaldi.org/download, this page}.
+
+@divEnd
+
+
+@divClass{column-center-top}
+@subheading Denemo
+
+@imageClickable{screenshot-denemo-small,png,
+  (click to enlarge),screenshot-denemo,png,right}
+
+@sourceimage{logo-linux,,,}
+@sourceimage{logo-windows,,,}
+
+@uref{http://denemo.org}
+
+@strong{Denemo} is a graphical editor that uses LilyPond internally.
+You enter your music in a graphical environment without @emph{necessarily}
+having to deal with LilyPond's input language.
+
+Denemo has been developed with particular attention to music entry,
+also through MIDI.
+
+Denemo already includes a version of LilyPond that will automatically be
+installed with it. But you can later use any LilyPond version with Denemo
+that you might install yourself.
+and can be obtained from its @uref{http://www.denemo.org/downloads-page/,
+Downloads} page.
+
+@divEnd
+
+@divClass{column-center-top}
+@anchor{editing-web-frontends}
+@subheading Web frontends
+
+As LilyPond is a command line tool it is possible to integrate it in a web
+application and build a frontend that internally calls LilyPond to generate
+web output. Such web applications are operating system independent by nature.
+
+@subsubheading Tunefl
+
+@uref{http://www.tunefl.com}
+
+With @emph{tunefl} you can typeset scores fragments directly online
+without needing to install lilypond locally. It allows
+trying out all the program's features using a convenient
+web interface.
+
+@subsubheading LilyBin
+
+@uref{http://www.lilybin.com}
+
+Other than @emph{tunefl}, @emph{LilyBin} works on full page scores. Edit them
+with an interface offering access to the full LilyPond input file.
+Create scores, download them as PDF and share them with others.
+
+@subsubheading Schikker's List
+
+@uref{http://lilypond.org/schikkers}
+
+@emph{Schikker's List} is a -- still experimental -- online editor allowing you to
+insert and edit music with a graphical interface and see the corresponding
+LilyPond code. Intended as an introduction to get in touch with LilyPond's
+text input.
+
+@divEnd
+
+@divClass{column-center-top}
+@anchor{editing-text-editors}
+@subheading Text editors
+
+@sourceimage{logo-linux,,,}
+@sourceimage{logo-freebsd,,,}
+@sourceimage{logo-macosx,,,}
+@sourceimage{logo-windows,,,}
+
+@uref{http://elysium.thsoft.hu}
+
+Elysium is a LilyPond IDE for Eclipse with an integrated, side-by-side
+view for source and score.  It includes rapid visual & auditive feedback
+without having to switch contexts, and comes with many wizard-driven
+templates.
+
+@uref{http://www.gnu.org/software/emacs/}
+
+Emacs is a text editor with language-sensitive capabilities for
+many different computer languages.  Emacs is a highly extensible
+editor and can be used as an Integrated Development Environment.
+There is a @q{lilypond mode} which supplies the language
+definitions for working with LilyPond source files.  A developer
+has written @uref{https://github.com/nsceaux/lyqi,lyqi}, an Emacs major
+mode.
+
+@uref{http://www.vim.org}
+
+Vim is a minimal text editor and is an extension of the older Unix
+@command{vi} editor.  It is also extensible and configurable.
+
+As a general rule, if you are not already familiar with Emacs or
+Vim, then you would probably prefer to use a different editor for
+writing LilyPond input files.
+
+More information on setting up Emacs and Vim can be found in
+@rprogram{Text editor support}.
+
+@sourceimage{logo-macosx,,,}
+@uref{http://www.uoregon.edu/~koch/texshop}
+
+The TexShop editor for MacOS@tie{}X can be extended to run LilyPond,
+@command{lilypond-book} and @command{convert-ly} from within the editor,
+using the extensions available at:
+
+@example
+@uref{http://users.dimi.uniud.it/~nicola.vitacolonna/home/content/lilypond-scripts}
+@end example
+
+@divEnd
+
+@divClass{column-center-top}
+@anchor{editing-lilypond-export}
+@subheading Programs that can export LilyPond code
+
+
+@subsubheading Score, tab and MIDI editors:
+
+@itemize
+
+@item
+@uref{http://www.jezra.net/projects/bwwtolily,bwwtolily} attempts to
+convert a @code{.bww} or @code{.bmw} file to LilyPond.  While not all of
+the embellishments may get converted properly (this is especially true
+with piobaireachd), the program will list them.
+
+@item
+@uref{http://www.canorus.org,Canorus}, a score editor, can also export
+to LilyPond, but is still beta-software. Testers are welcome, though.
+
+@item
+@uref{http://enc2ly.sourceforge.net/en/,Enc2ly} is a GNU/Linux program
+which converts an @uref{http://www.gvox.com/,Encore} music score into
+a LilyPond one.
+
+@item
+@uref{https://github.com/hanwen/go-enc2ly,go-enc2ly} is a Go tool that
+converts @uref{http://www.gvox.com/,Encore} files to LilyPond.  It was
+created using Felipe Castro's research and reverse engineering by
+tweaking existing .enc files and loading them using the 4.55 demo
+version.
+
+@item
+@uref{http://www.musescore.org,MuseScore}, a score editor, has
+incomplete LilyPond export but is being actively developed.
+
+@item
+@uref{http://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml,NtEd},
+a score editor based on the @uref{http://www.cairographics.org,Cairo}
+library, it has experimental support for exporting to LilyPond.
+
+@item
+@uref{http://www.holmessoft.co.uk/homepage/software/NWC2LY/index.htm,NW2LY}
+is a C# program which converts a NoteWorthy composer song into LilyPond.
+
+@item
+@uref{https://github.com/ciconia/ripple/blob/master/README.markdown,Ripple}
+is a program that helps create scores and parts, including a mode for
+mixing different musical works together in a single score or part.
+
+@item
+@uref{http://www.rosegardenmusic.com,Rosegarden}, an audio and MIDI
+sequencer, which also has a score editor for single-staff editing.
+
+@item
+@uref{https://launchpad.net/rumor/,Rumor}, a realtime monophonic
+MIDI-to-LilyPond converter.
+
+@item
+@uref{http://www.tuxguitar.com.ar/,TuxGuitar}, a multitrack tablature
+editor and player, includes a score viewer and can export to LilyPond.
+
+@end itemize
+
+@subsubheading Algorithmic code generators
+
+@itemize
+
+@item
+@uref{http://www.projectabjad.org/,Abjad}, a
+@uref{http://www.python.org/,Python} API for Formalized Score Control
+designed to help composers build up complex pieces of LilyPond notation
+in an iterative and incremental way.
+
+@item
+@uref{http://common-lisp.net/project/fomus/,FOMUS}, (FOrmat MUSic) is a
+music notation tool for computer music composers.  It is written in the
+Lisp programming language, and has been tested in a variety of
+interpreters.  A C++ port is also available.
+
+@item
+@uref{http://strasheela.sourceforge.net/strasheela/doc/index.html,Strasheela},
+an environment built on top of the
+@uref{http://www.mozart-oz.org/, Mozart/Oz} constraint programming
+language.
+
+@end itemize
+@divEnd
+
+@divClass{column-center-top}
+@anchor{editing-inactive-programs}
+@subheading Other programs not being actively developed
+
+@itemize
+
+@item
+@imageClickable{lilypondtool-2.12-screenshot-400wide,png,
+  (click to enlarge),lilypondtool-2.12-screenshot,png,right}
+
+@uref{http://lilypondtool.blogspot.de/, LilyPondTool} is a jEdit plugin
+and one of the most feature-rich environments available. @uref{http://jedit.org, jEdit} is a
+Java based multi-purpose editor that is available on all platforms that
+can run Java. Unfortunately development of LilyPondTool has been abandoned.
+
+@item
+@uref{http://lilykde.googlecode.com/,LilyKDE} has been replaced by
+@uref{http://www.frescobaldi.org/,Frescobaldi}, and exists as LilyKDE3
+for KDE 3.5 and lilypond-KDE4 for KDE 4.1 only.
+
+@item
+@uref{http://noteedit.berlios.de,NoteEdit}, which imported
+@uref{http://www.makemusic.com/musicxml,MusicXML}, has been forked
+into
+@uref{http://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml,NtEd}
+and @uref{http://canorus.org,Canorus}.
+
+
+@item
+@uref{http://lilycomp.sourceforge.net, LilyComp} is a graphical
+note entry program, acting much like a number-pad which produces
+lilypond notes.
+
+@end itemize
+
+@divEnd
+
+
+@divClass{column-center-bottom}
+@subheading Where now?
+
+You are now ready to @ref{Download, Download LilyPond}.
+
+Not convinced yet?  Many composers, musicians, and conductors
+have learned how to write music in our input format.  Experienced
+users even report that they can enter a full score in LilyPond
+faster than with a piano keyboard or mouse+GUI!  Perhaps you would
+like to review the @ref{Features}, @ref{Examples}, or the
+@ref{Freedom} that LilyPond provides, or read about users'
+@ref{Productions} and @ref{Reviews}.  In addition, our
+approach to the computational aesthetics of classical engraving is
+explained in our @ref{Background}.
+
+
+@subheading Legalese
+
+@divClass{legal}
+All logos and product images are copyright and trademark
+acknowledged.
+
+@logoLegalLinux
+
+@logoLegalFreeBSD
+
+@logoLegalMacOSX
+
+@logoLegalWindows
+
+@divEnd
+
+@divEnd
+
+
 @node Examples
 @unnumberedsec Examples
 
@@ -710,6 +1179,16 @@ If you've already decided to try LilyPond, first read about our
 
 @c TRANSLATORS, so far it's mostly from
 @c http://lilypond.org/web/switch/testimonials
+
+
+@node Appliances
+@unnumberedsec Appliances
+
+@divClass{column-center-top}
+@subheading Other appliances for LilyPond
+
+@divEnd
+
 
 @node Reviews
 @unnumberedsec Reviews
@@ -1016,472 +1495,4 @@ I want on the page, especially when it isn't "standard" practice.}
 @subheading Where now?
 
 Read about our @ref{Text input}.
-@divEnd
-
-
-
-@node Text input
-@unnumberedsec Text input
-
-@c TRANSLATORS, so far it's mostly from
-@c http://lilypond.org/web/switch/howto
-
-@subheading @qq{Compiling} Music
-
-@imageClickable{nereid-shot-small,png, (click to enlarge), nereid-shot,png, right}
-
-LilyPond is a @emph{compiled} system: it is run on a text file
-describing the music.  The resulting output is viewed on-screen or
-printed.  In some ways, LilyPond is more similar to a programming
-language than graphical score editing software.
-
-You do not write music by dragging notes from a graphical toolbar
-and placing them on a dynamically refreshing score; you write
-music by typing text.  This text is interpreted (or @qq{compiled})
-by LilyPond, which produces beautifully engraved sheet music.
-
-People accustomed to graphical user interfaces might need to learn
-a new way of working, but the results are definitely worth it!
-
-@warning{We present a quick overview of our text input -- it's not
-as complicated as it sounds!  Don't worry about understanding
-every detail in these examples; our beginner documentation covers
-everything at a much more gradual pace.}
-
-
-@subsubheading It's as simple as A B C
-
-Notes are encoded with letters and numbers.  Special commands are
-entered with backslashes.
-
-@imageFloat{text-input-1-annotate,png,center}
-@imageFloat{text-input-1-output,png,center}
-
-Alterations are made with different names: add @w{@code{-is}} for
-sharp, and @w{@code{-es}} for flat (these are Dutch note names, other
-languages are available).  LilyPond figures out where to put
-accidentals.
-
-@imageFloat{text-input-2-annotate,png,center}
-@imageFloat{text-input-2-output,png,center}
-
-
-@subsubheading Pop music
-
-Put chords and lyrics together to get a lead sheet:
-
-@imageFloat{text-input-pop-annotate,png,center}
-@imageFloat{text-input-pop-output,png,center}
-
-
-
-@subsubheading Orchestral parts
-
-The input file contains the notes of piece of music.  Score and
-parts can be made from a single input file, so that changing a
-note always affects the score and parts.  To be able to include
-the same music in multiple places, the music is assigned to a
-@qq{variable} (a name).
-
-@imageFloat{text-input-parts-both-annotate,png,center}
-
-
-This variable is then used in a single part (here transposed, with
-condensed rests spanning several measures):
-
-@imageFloat{text-input-parts-single-annotate,png,center}
-@imageFloat{text-input-parts-single-output,png,center}
-
-
-The same variable is used in the full score (here in concert
-pitch):
-
-@imageFloat{text-input-score-annotate,png,center}
-@imageFloat{text-input-score-output,png,center}
-
-
-@subsubheading Beginner Documentation
-
-We realize that many users find this way of entering music a bit
-odd.  For this reason, we have written extensive documentation to
-help new users, beginning with @ref{Learning}.  The Learning
-Manual is the best place to start, as many questions are answered
-before they come up!
-
-Please read the Learning Manual before complaining about bugs!
-New users occasionally believe that LilyPond is not working
-correctly, when in fact it is working precisely as designed.
-
-More in-depth information is available in @ref{Manuals}.
-
-
-@subsubheading Editing environments
-
-@imageClickable{lilykde-screenshot-small,png,
-  (click to enlarge),lilykde-screenshot,png,right}
-
-LilyPond is primarily concerned with producing top-quality
-engraved sheet music; creating a Graphical User Interface (GUI)
-would distract us from this goal.  However, there are other
-projects aimed at making it easier to create LilyPond input files.
-
-Some editing environments include syntax highlighting, automatic
-command completion, and pre-made templates.  Other programs
-actually provide a GUI which allows direct manipulation of a
-graphical score.  For more information, see @ref{Editing}.
-
-
-
-@divClass{column-center-bottom}
-@subheading Where now?
-
-You are now ready to @ref{Download, Download LilyPond}.  Still not
-convinced?  Read about @ref{Editing}.
-
-@divEnd
-
-
-@node Editing
-@unnumberedsec Editing
-
-@ignore
-GNU policy forbids us from linking to non-Free software, so don't
-add such links.
-
-In particular, don't link to:
-- the LilyPond bundle for TextMate (a commercial editor for MacOS).
-
-@end ignore
-
-@divClass{heading-center}
-
-@heading Editing LilyPond scores
-
-@divEnd
-
-@divClass{column-center-top}
-@subheading Introduction
-
-As LilyPond is a @strong{command line tool} there is no such thing as a
-“LilyPond program” you could open. Instead you edit text files
-which contain the musical content described in LilyPond's input
-language (see @ref{Text input}). We recommend using one of the
-dedicated tools described below.
-
-After descriptions of @emph{Frescobaldi} and @emph{Denemo}, two full-fledged
-editing environments you will find sections about
-@ref{editing-web-frontends,Web frontends}
-for getting in touch with LilyPond, 
-General purpose @ref{editing-text-editors,Text editors} with specific support
-for LilyPond,
-Programs that can @ref{editing-lilypond-export,export to LilyPond} and
-@ref{editing-inactive-programs,Outdated programs} that aren't actively
-developed anymore.
-
-@divEnd
-
-
-@divClass{column-center-top}
-@subheading Frescobaldi
-
-@imageClickable{frescobaldi-lilypond-editor-small,png,
-  (click to enlarge),frescobaldi-lilypond-editor,png,right}
-
-@sourceimage{logo-linux,,,}
-@sourceimage{logo-macosx,,,}
-@sourceimage{logo-windows,,,}
-
-@uref{http://www.frescobaldi.org}
-
-@strong{Frescobaldi} is a lightweight, yet powerful LilyPond music and
-text editor with a built-in PDF viewer.  It is easy to use and will run
-on all major operating systems (GNU/Linux, Mac OS X and Windows).
-It gives you access to every detail of LilyPond's input language.
-
-Frescobaldi offers functions such as Score Wizard,
-Quick Insert or Music functions (transpose, scale rhythms etc.) and
-two-way point-and-click in particular that allows you to switch
-between the input file and the resulting notation without having to
-search through the files.
-
-@node Appliances
-@unnumberedsec Appliances
-
-@divClass{column-center-top}
-@subheading Other appliances for LilyPond
-
-@divEnd
-
-
-@divClass{column-center-top}
-@subheading Denemo
-
-@imageClickable{screenshot-denemo-small,png,
-  (click to enlarge),screenshot-denemo,png,right}
-
-@sourceimage{logo-linux,,,}
-@sourceimage{logo-windows,,,}
-
-@uref{http://denemo.org}
-
-@strong{Denemo} is a graphical editor that uses LilyPond internally.
-You enter your music in a graphical environment without @emph{necessarily}
-having to deal with LilyPond's input language.
-
-Denemo has been developed with particular attention to music entry,
-also through MIDI.
-
-Denemo already includes a version of LilyPond that will automatically be
-installed with it. But you can later use any LilyPond version with Denemo
-that you might install yourself.
-and can be obtained from its @uref{http://www.denemo.org/downloads-page/,
-Downloads} page.
-
-@divEnd
-
-@divClass{column-center-top}
-@anchor{editing-web-frontends}
-@subheading Web frontends
-
-As LilyPond is a command line tool it is possible to integrate it in a web
-application and build a frontend that internally calls LilyPond to generate
-web output. Such web applications are operating system independent by nature.
-
-@subsubheading Tunefl
-
-@uref{http://www.tunefl.com}
-
-With @emph{tunefl} you can typeset scores fragments directly online
-without needing to install lilypond locally. It allows
-trying out all the program's features using a convenient
-web interface.
-
-@subsubheading LilyBin
-
-@uref{http://www.lilybin.com}
-
-Other than @emph{tunefl}, @emph{LilyBin} works on full page scores. Edit them
-with an interface offering access to the full LilyPond input file.
-Create scores, download them as PDF and share them with others.
-
-@subsubheading Schikker's List
-
-@uref{http://lilypond.org/schikkers}
-
-@emph{Schikker's List} is a -- still experimental -- online editor allowing you to
-insert and edit music with a graphical interface and see the corresponding
-LilyPond code. Intended as an introduction to get in touch with LilyPond's
-text input.
-
-@divEnd
-
-@divClass{column-center-top}
-@anchor{editing-text-editors}
-@subheading Text editors
-
-@sourceimage{logo-linux,,,}
-@sourceimage{logo-freebsd,,,}
-@sourceimage{logo-macosx,,,}
-@sourceimage{logo-windows,,,}
-
-@uref{http://elysium.thsoft.hu}
-
-Elysium is a LilyPond IDE for Eclipse with an integrated, side-by-side
-view for source and score.  It includes rapid visual & auditive feedback
-without having to switch contexts, and comes with many wizard-driven
-templates.
-
-@uref{http://www.gnu.org/software/emacs/}
-
-Emacs is a text editor with language-sensitive capabilities for
-many different computer languages.  Emacs is a highly extensible
-editor and can be used as an Integrated Development Environment.
-There is a @q{lilypond mode} which supplies the language
-definitions for working with LilyPond source files.  A developer
-has written @uref{https://github.com/nsceaux/lyqi,lyqi}, an Emacs major
-mode.
-
-@uref{http://www.vim.org}
-
-Vim is a minimal text editor and is an extension of the older Unix
-@command{vi} editor.  It is also extensible and configurable.
-
-As a general rule, if you are not already familiar with Emacs or
-Vim, then you would probably prefer to use a different editor for
-writing LilyPond input files.
-
-More information on setting up Emacs and Vim can be found in
-@rprogram{Text editor support}.
-
-@sourceimage{logo-macosx,,,}
-@uref{http://www.uoregon.edu/~koch/texshop}
-
-The TexShop editor for MacOS@tie{}X can be extended to run LilyPond,
-@command{lilypond-book} and @command{convert-ly} from within the editor,
-using the extensions available at:
-
-@example
-@uref{http://users.dimi.uniud.it/~nicola.vitacolonna/home/content/lilypond-scripts}
-@end example
-
-@divEnd
-
-@divClass{column-center-top}
-@anchor{editing-lilypond-export}
-@subheading Programs that can export LilyPond code
-
-
-@subsubheading Score, tab and MIDI editors:
-
-@itemize
-
-@item
-@uref{http://www.jezra.net/projects/bwwtolily,bwwtolily} attempts to
-convert a @code{.bww} or @code{.bmw} file to LilyPond.  While not all of
-the embellishments may get converted properly (this is especially true
-with piobaireachd), the program will list them.
-
-@item
-@uref{http://www.canorus.org,Canorus}, a score editor, can also export
-to LilyPond, but is still beta-software. Testers are welcome, though.
-
-@item
-@uref{http://enc2ly.sourceforge.net/en/,Enc2ly} is a GNU/Linux program
-which converts an @uref{http://www.gvox.com/,Encore} music score into
-a LilyPond one.
-
-@item
-@uref{https://github.com/hanwen/go-enc2ly,go-enc2ly} is a Go tool that
-converts @uref{http://www.gvox.com/,Encore} files to LilyPond.  It was
-created using Felipe Castro's research and reverse engineering by
-tweaking existing .enc files and loading them using the 4.55 demo
-version.
-
-@item
-@uref{http://www.musescore.org,MuseScore}, a score editor, has
-incomplete LilyPond export but is being actively developed.
-
-@item
-@uref{http://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml,NtEd},
-a score editor based on the @uref{http://www.cairographics.org,Cairo}
-library, it has experimental support for exporting to LilyPond.
-
-@item
-@uref{http://www.holmessoft.co.uk/homepage/software/NWC2LY/index.htm,NW2LY}
-is a C# program which converts a NoteWorthy composer song into LilyPond.
-
-@item
-@uref{https://github.com/ciconia/ripple/blob/master/README.markdown,Ripple}
-is a program that helps create scores and parts, including a mode for
-mixing different musical works together in a single score or part.
-
-@item
-@uref{http://www.rosegardenmusic.com,Rosegarden}, an audio and MIDI
-sequencer, which also has a score editor for single-staff editing.
-
-@item
-@uref{https://launchpad.net/rumor/,Rumor}, a realtime monophonic
-MIDI-to-LilyPond converter.
-
-@item
-@uref{http://www.tuxguitar.com.ar/,TuxGuitar}, a multitrack tablature
-editor and player, includes a score viewer and can export to LilyPond.
-
-@end itemize
-
-@subsubheading Algorithmic code generators
-
-@itemize
-
-@item
-@uref{http://www.projectabjad.org/,Abjad}, a
-@uref{http://www.python.org/,Python} API for Formalized Score Control
-designed to help composers build up complex pieces of LilyPond notation
-in an iterative and incremental way.
-
-@item
-@uref{http://common-lisp.net/project/fomus/,FOMUS}, (FOrmat MUSic) is a
-music notation tool for computer music composers.  It is written in the
-Lisp programming language, and has been tested in a variety of
-interpreters.  A C++ port is also available.
-
-@item
-@uref{http://strasheela.sourceforge.net/strasheela/doc/index.html,Strasheela},
-an environment built on top of the
-@uref{http://www.mozart-oz.org/, Mozart/Oz} constraint programming
-language.
-
-@end itemize
-@divEnd
-
-@divClass{column-center-top}
-@anchor{editing-inactive-programs}
-@subheading Other programs not being actively developed
-
-@itemize
-
-@item
-@imageClickable{lilypondtool-2.12-screenshot-400wide,png,
-  (click to enlarge),lilypondtool-2.12-screenshot,png,right}
-
-@uref{http://lilypondtool.blogspot.de/, LilyPondTool} is a jEdit plugin
-and one of the most feature-rich environments available. @uref{http://jedit.org, jEdit} is a
-Java based multi-purpose editor that is available on all platforms that
-can run Java. Unfortunately development of LilyPondTool has been abandoned.
-
-@item
-@uref{http://lilykde.googlecode.com/,LilyKDE} has been replaced by
-@uref{http://www.frescobaldi.org/,Frescobaldi}, and exists as LilyKDE3
-for KDE 3.5 and lilypond-KDE4 for KDE 4.1 only.
-
-@item
-@uref{http://noteedit.berlios.de,NoteEdit}, which imported
-@uref{http://www.makemusic.com/musicxml,MusicXML}, has been forked
-into
-@uref{http://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml,NtEd}
-and @uref{http://canorus.org,Canorus}.
-
-
-@item
-@uref{http://lilycomp.sourceforge.net, LilyComp} is a graphical
-note entry program, acting much like a number-pad which produces
-lilypond notes.
-
-@end itemize
-
-@divEnd
-
-
-@divClass{column-center-bottom}
-@subheading Where now?
-
-You are now ready to @ref{Download, Download LilyPond}.
-
-Not convinced yet?  Many composers, musicians, and conductors
-have learned how to write music in our input format.  Experienced
-users even report that they can enter a full score in LilyPond
-faster than with a piano keyboard or mouse+GUI!  Perhaps you would
-like to review the @ref{Features}, @ref{Examples}, or the
-@ref{Freedom} that LilyPond provides, or read about users'
-@ref{Productions} and @ref{Reviews}.  In addition, our
-approach to the computational aesthetics of classical engraving is
-explained in our @ref{Background}.
-
-
-@subheading Legalese
-
-@divClass{legal}
-All logos and product images are copyright and trademark
-acknowledged.
-
-@logoLegalLinux
-
-@logoLegalFreeBSD
-
-@logoLegalMacOSX
-
-@logoLegalWindows
-
-@divEnd
-
 @divEnd
