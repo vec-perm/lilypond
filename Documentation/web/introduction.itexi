@@ -258,9 +258,8 @@ imagination.
 As LilyPond isn't a monolithic GUI program but a command line tool it
 can be used from within other applications too. This way it is possible
 to equip tools like e.g. web applications with LilyPond's engraving
-power. There already exist several online tools using LilyPond.
-
-(TBD: Add a list of such tools to @ref{Publications}).
+power. There already exist several online tools using LilyPond (see
+@ref{Appliances})..
 
 
 @divEnd
@@ -1185,10 +1184,65 @@ If you've already decided to try LilyPond, first read about our
 @unnumberedsec Appliances
 
 @divClass{column-center-top}
-@subheading Other appliances for LilyPond
+@subheading Appliances for LilyPond
+Did we say that LilyPond is a command line tool? That makes it possible to
+invoke LilyPond from other programs to incorporate its engraving
+capabilities in other applications.
+The most natural idea would be to create an online editor for LilyPond
+scores -- and actually there already are several available
+(@xref{editing-web-frontends,Editing}). Read more about original, funny, practical
+or crazy appliances people invented with LilyPond below.
 
 @divEnd
 
+@divClass{column-center-top}
+@subheading Web based tools
+
+@subsubheading Use LilyPond input on Wikipedia
+
+@uref{http://www.mediawiki.org/wiki/Extension:Score}
+
+@subsubheading ScaleMatcher
+
+@subsubheading An online tool for harmonic analysis (source???)
+
+@divEnd
+
+@divClass{column-center-top}
+@subheading Miscellaneous tools
+
+@subsubheading Scora
+@uref{http://www.scora.net} -- but isn't that too big in this context?
+
+@subsubheading Anki-LilyPond
+@uref{https://github.com/frostschutz/Anki-LilyPond}
+
+With this addon, you can add sheet music snippets to your deck, wrapped 
+in [lilypond]c d e[/lilypond] tags.
+
+@subsubheading LilyPond It!
+
+@uref{https://addons.mozilla.org/en-US/thunderbird/addon/lilypond-it/}
+
+Add LilyPond score fragments to Thunderbird email messages.
+
+@divEnd
+
+
+@divClass{column-center-top}
+@subheading Notation
+
+@subsubheading Clairnote and Twinnote
+
+@uref{http://clairnote.org} and @uref{http://clairnote.org/twinnote}.
+
+@subsubheading Musical code generators
+
+Such as the ones on @ref{editing-text-editors}. Link there? Copy items? Create macro?
+
+@divEnd
+
+@contactUsAbout{appliances}	
 
 @node Reviews
 @unnumberedsec Reviews
