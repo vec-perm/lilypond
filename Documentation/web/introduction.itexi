@@ -47,7 +47,7 @@ traditions of classical music engraving.
 @divEnd
 
 @divClass{column-right-top}
-@subheading Real-World LilyPond
+@subheading LilyPond in action
 @itemize
 
 @item
@@ -78,13 +78,13 @@ traditions of classical music engraving.
 
 @item
 @uref{http://lilypondblog.org,
-Scores of Beauty}: LilyPond Blog
+Scores of Beauty}: Follow LilyPond blog!
 
 @item
 @ref{Reviews}: What do people say?
 
 @item
-@ref{Publications}: what we wrote, and have had written about us.
+@ref{Publications}: What we wrote, and have had written about us.
 
 @divEnd
 
@@ -137,12 +137,10 @@ best-engraved classical scores.  This is further explained in our
 
 @subsubheading Everything is explicit
 
-LilyPond processes ASCII or UTF-8 input, which you can produce
-in your favorite text editor, quickly and comfortably. The input
+LilyPond processes text input, which
 contains all information about the @emph{content} of your score and can
-easily be read by any human or another program. Everything in that
-file is explicitly written and there are no obscure settings hidden
-behind menu items and binary file storage.
+easily be read by any human or another program. There are no obscure
+settings hidden behind menu items and binary file storage.
 
 
 @subsubheading Tweaks are robust and traceable
@@ -156,10 +154,8 @@ or modify any decision without being at the mercy of an @emph{Undo} function.
 @subsubheading Text files are robust
 
 Text files are very robust against file corruption. And as they are
-human-readable you will always be able to interpret them even if
-the programs used to create them may have vanished. But as long as
-LilyPond exists there will be tools to automatically update existing
-input files.
+human-readable, you will always be able to interpret them even if
+you don't have access to the programs that created them.
 
 
 @subsubheading Manage your scores with version control
@@ -185,9 +181,6 @@ formatting correct right from the start.  It determines spacing by
 itself, and breaks lines and pages to provide a tight and uniform
 layout.  Clashes between lyrics, notes, and chords are resolved
 and slurs and beams are sloped, automatically!
-This is also a result from being a compiled system: LilyPond doesn't
-have to produce an acceptable result in real-time but can take the
-time that is necessary to produce a perfect result.
 
 
 @subsubheading Mix music and text
@@ -212,11 +205,9 @@ Take the last image on the @ref{Examples} page as a spectacular example.
 
 @subsubheading Editor diversity
 
-LilyPond's input files can be created and edited with your favorite
-text editor. But while this is actually possible it is recommended to use
-a dedicated LilyPond editor. Several developers, themselves active LilyPond users, 
+Several developers, themselves active LilyPond users, 
 have written tools specifically aimed at making the process of editing
-LilyPond files faster and more effective. This way you are not tied to
+LilyPond files faster and more effective; you are not tied to
 a single user interface but can use different tools for different tasks.
 You can even use a full-fledged LilyPond editor at home and use your
 mobile phone's notepad app to edit the files on the go. For some examples,
@@ -244,8 +235,7 @@ will effortlessly produce both from the same input.
 @subsubheading Add your own functions
 
 If that still is not enough, there is always the built-in
-scripting language Scheme, a dialect of the powerful language
-LISP. Scheme can access LilyPond's layout engine at the
+scripting language Scheme, which can access LilyPond's layout engine at the
 same level as LilyPond itself does, making it a @emph{very} powerful tool.
 Settings, variables and functions are all documented in the
 comprehensive program reference manual.
@@ -1169,16 +1159,10 @@ In particular, don't link to:
 @subheading Introduction
 
 As LilyPond is a @strong{command line tool} there is no such thing as a
-“LilyPond program” you could open. Instead you edit plain text files
+“LilyPond program” you could open. Instead you edit text files
 which contain the musical content described in LilyPond's input
-language (see @ref{Text input}). For this you can either use the text
-editor of your choice or one of the dedicated tools described below.
-
-To get a first impression it may be useful to check out one of the
-online tools in a later section. But the most complete solutions
-suggested for beginners are @emph{Frescobaldi} and @emph{Denemo},
-both of which offer complete environments for your work with LilyPond
-socres, but with different characteristics each.
+language (see @ref{Text input}). We recommend using one of the
+dedicated tools described below.
 
 
 @divEnd
@@ -1199,12 +1183,7 @@ socres, but with different characteristics each.
 @strong{Frescobaldi} is a lightweight, yet powerful LilyPond music and
 text editor with a built-in PDF viewer.  It is easy to use and will run
 on all major operating systems (GNU/Linux, Mac OS X and Windows).
-
-While offering many convenience and editing tools it still
-is a @emph{text} editor. It gives you access to every detail of LilyPond's
-input language but you are therefore responsible to edit this yourself.
-Frescobaldi provides access to LilyPond's documentation inside the
-working environment.
+It gives you access to every detail of LilyPond's input language.
 
 Frescobaldi offers functions such as Score Wizard,
 Quick Insert or Music functions (transpose, scale rhythms etc.) and
@@ -1234,19 +1213,12 @@ and Mac OS X. For installation instructions please refer to
 
 @uref{http://denemo.org}
 
-@strong{Denemo} is a graphical editor that internally uses LilyPond for
-creating its output. Opposed to Frescobaldi you'll enter your music in
-a graphical environment without @emph{necessarily} having to deal with
-LilyPond's input language. Extra LilyPond tweaks can be attached to notes,
-chords etc. and are stored with the Denemo file, so that users can continue
-to edit graphically. However, Denemo also gives you access to the raw input
-files to edit them directly but this may partially cause conflicts with
-the graphical editing.
+@strong{Denemo} is a graphical editor that uses LilyPond internally.
+You enter your music in a graphical environment without @emph{necessarily}
+having to deal with LilyPond's input language.
 
 Denemo has been developed with particular attention to music entry,
-also through MIDI. Moving the cursor in the LilyPond text moves the cursor
-in the graphical view, and any syntax errors in your LilyPond tweaks are
-highlighted in the text view when printed from there.
+also through MIDI.
 
 Denemo already includes a version of LilyPond that will automatically be
 installed with it. But you can later use any LilyPond version with Denemo
