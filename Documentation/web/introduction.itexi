@@ -205,7 +205,7 @@ speech-recognition software to edit LilyPond files.  Even users
 who are totally blind can use screen-reading software to write
 LilyPond files -- an impossible task in graphical-based
 score-writing programs.
-Take the last image on the @ref{Examples} page as a spectacular example.
+Take a look at this @ref{examples-large-projects,spectacular example}.
 
 @subsubheading Editor diversity
 
@@ -1024,6 +1024,7 @@ to suit nearly any situation.
 @newsEnd
 
 @newsItem
+@anchor{examples-large-projects}
 @subsubheading Large Projects
 
 LilyPond is excellent for large projects like operas or works for
