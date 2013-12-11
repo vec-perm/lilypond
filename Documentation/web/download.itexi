@@ -53,8 +53,8 @@ input language concept.
 @subsubheading I'm new to LilyPond and don't have a dedicated editor yet
 
 If you don't already have an editing environment for LilyPond you should
-go to @ref{Editing} now. Apart from getting information on the editing
-concept you'll find a list of known editors. For beginners it is
+go to @ref{Editing} now. There you'll find a list of dedicated tools to
+work with LilyPond input files. For beginners it is
 recommended to download and install either @strong{Frescobaldi} or
 @strong{Denemo}. Both can take care of installing LilyPond for you.
 
