@@ -1258,10 +1258,6 @@ With this addon, you can add sheet music snippets to your deck of
 @uref{http://www.ankisrs.net,Anki} cards, wrapped in 
 @code{[lilypond]c d e[/lilypond]} tags.
 
-@subsubheading Scora
-@uref{http://www.scora.net}@*
-@emph{Wait for the licensing issue to be cleared.}
-
 @divEnd
 
 
