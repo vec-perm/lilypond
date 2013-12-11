@@ -315,9 +315,13 @@ or @ref{Editing,editing environments}.
 We have an extensive essay describing computational aesthetics:
 the art of creating beauty with a computer.
 
-If you just want a quick introduction to LilyPond, the essay might
-be too much material to read.  If you would like to read it now,
-please progress to @ref{Essay}.
+This is optional reading if you want to know more about our
+aesthetic ideals and our approach to achieving them with
+automated engraving.
+If you would like to read it now, please progress to @ref{Essay}
+in the @emph{Manuals} section of the website. If you're simply looking
+for a quick introduction to LilyPond you may instead proceed to the
+@ref{Features} page.
 @divEnd
 
 @divClass{column-center-bottom}
