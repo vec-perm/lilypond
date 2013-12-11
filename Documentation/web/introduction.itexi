@@ -824,6 +824,7 @@ editor and player, includes a score viewer and can export to LilyPond.
 
 @end itemize
 
+@anchor{editing-code-generators}
 @subsubheading Algorithmic code generators
 
 @itemize
@@ -1205,11 +1206,13 @@ If you've already decided to try LilyPond, first read about our
 @divClass{column-center-top}
 @subheading Appliances for LilyPond
 Did we say that LilyPond is a command line tool? That makes it possible to
-invoke LilyPond from other programs to incorporate its engraving
-capabilities in other applications.
+invoke LilyPond from other programs. So its engraving
+capabilities can be incorporated in other applications.
 The most natural idea would be to create an online editor for LilyPond
 scores -- and actually there already are several available
-(@xref{editing-web-frontends,Editing}). Read more about original, funny, practical
+(@xref{editing-web-frontends,Editing}).
+
+Read more about original, funny, practical
 or crazy appliances people invented with LilyPond below.
 
 @divEnd
@@ -1219,31 +1222,45 @@ or crazy appliances people invented with LilyPond below.
 
 @subsubheading Use LilyPond input on Wikipedia
 
-@uref{http://www.mediawiki.org/wiki/Extension:Score}
+@uref{http://www.mediawiki.org/wiki/Extension:Score}@*
+You can enter LilyPond code in @code{<score></score>} tags for articles
+on Wikipedia (or other projects using MediaWiki). The code will be
+converted to beautiful music examples.@*
+
 
 @subsubheading ScaleMatcher
+@uref{http://scalematcher.adamspiers.org}@*
+ScaleMatcher is an online tool that generates possible scales that
+match a given chord. You can select a number of scale and chord modes
+to be considered. Very interesting for improvisers!
 
 @subsubheading An online tool for harmonic analysis (source???)
+
+@emph{This was reported recenty (I'd say within weeks) but I don't recall
+what it exactly was and dont seem to find the appropriate search
+terms to find the email.}
 
 @divEnd
 
 @divClass{column-center-top}
 @subheading Miscellaneous tools
 
-@subsubheading Scora
-@uref{http://www.scora.net} -- but isn't that too big in this context?
-
-@subsubheading Anki-LilyPond
-@uref{https://github.com/frostschutz/Anki-LilyPond}
-
-With this addon, you can add sheet music snippets to your deck, wrapped 
-in [lilypond]c d e[/lilypond] tags.
-
 @subsubheading LilyPond It!
 
-@uref{https://addons.mozilla.org/en-US/thunderbird/addon/lilypond-it/}
+@uref{https://addons.mozilla.org/thunderbird/addon/lilypond-it/}@*
+Add LilyPond score fragments to Mozilla Thunderbird email messages.
+This add-on will copmile LilyPond code fragments that you enter in an
+email body and insert the resulting image in an HTML email.
 
-Add LilyPond score fragments to Thunderbird email messages.
+@subsubheading Anki-LilyPond
+@uref{https://github.com/frostschutz/Anki-LilyPond}@*
+With this addon, you can add sheet music snippets to your deck of
+@uref{http://www.ankisrs.net,Anki} cards, wrapped in 
+@code{[lilypond]c d e[/lilypond]} tags.
+
+@subsubheading Scora
+@uref{http://www.scora.net}@*
+@emph{Wait for the licensing issue to be cleared.}
 
 @divEnd
 
@@ -1257,7 +1274,12 @@ Add LilyPond score fragments to Thunderbird email messages.
 
 @subsubheading Musical code generators
 
-Such as the ones on @ref{editing-text-editors}. Link there? Copy items? Create macro?
+LilyPond input files can be generated programmatically, so
+it is natural that there are some tools making use of that
+feature. See the subsection on @ref{editing-code-generators}.
+There are also a few examples on the
+@uref{http://lilypondblog.org/category/using-lilypond/advanced/,
+Scores of Beauty} blog.
 
 @divEnd
 
