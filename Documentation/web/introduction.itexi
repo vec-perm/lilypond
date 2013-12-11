@@ -296,9 +296,12 @@ Read more on @ref{Freedom}.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Not convinced yet?  Look at some specific @ref{Examples}.  If you've
-already decided to try LilyPond, first read about our
-@ref{Text input}.
+Not convinced yet?
+Read the extensive @ref{Essay,essay} on our aesthetic background or
+look at some specific @ref{Examples}. @*
+If you want to know more about
+working with LilyPond, first read about @ref{Text input,text input}
+or @ref{Editing,editing environments}.
 @divEnd
 
 
@@ -320,9 +323,11 @@ please progress to @ref{Essay}.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Not convinced yet?  Read about some of our users'
-@ref{Productions} and sheet music.  If you've already decided to
-try LilyPond, first read about our @ref{Text input}.
+Not convinced yet?  Read more about @ref{Freedom} in software
+or our @ref{Text input}.@*
+Or look at some @ref{Examples,examples} and read about actual
+@ref{Productions} and sheet music our users have created
+with LilyPond.
 @divEnd
 
 
@@ -430,9 +435,10 @@ or scholarships.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Not convinced yet?  Read our extensive essay about our engraving
-philosophy in @ref{Background}.  If you've already decided to try
-LilyPond, first read about our @ref{Text input}.
+Not convinced yet?  Read about our @ref{Text input} and @ref{Editing}
+environments.@*
+To see what users and developers did with LilyPond continue with
+@ref{Productions} and @ref{Appliances}.
 @divEnd
 
 
@@ -544,15 +550,18 @@ projects aimed at making it easier to create LilyPond input files.
 Some editing environments include syntax highlighting, automatic
 command completion, and pre-made templates.  Other programs
 actually provide a GUI which allows direct manipulation of a
-graphical score.  For more information, see @ref{Editing}.
+graphical score.
 
 
 
 @divClass{column-center-bottom}
 @subheading Where now?
 
-You are now ready to @ref{Download, Download LilyPond}.  Still not
-convinced?  Read about @ref{Editing}.
+Read more about @ref{Editing,editing} or have a look at some
+@ref{Examples} to see what can be achieved with text input and how.@*
+Not convinced yet? Read some @ref{Reviews,reviews} or see what
+users have done on @ref{Productions}.@*
+Or go to @ref{Download} and start using LilyPond.
 
 @divEnd
 
@@ -883,7 +892,7 @@ like to review the @ref{Features}, @ref{Examples}, or the
 @ref{Freedom} that LilyPond provides, or read about users'
 @ref{Productions} and @ref{Reviews}.  In addition, our
 approach to the computational aesthetics of classical engraving is
-explained in our @ref{Background}.
+explained in our background @ref{Essay}.
 
 
 @subheading Legalese
@@ -1039,9 +1048,10 @@ contributed by Hu Haipeng, a blind composer.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Not convinced yet?  LilyPond is Free software, granting you
-@ref{Freedom}.  If you've already decided to try LilyPond, first
-read about our @ref{Text input}.
+Not convinced yet? Read more about real-world use of LilyPond
+on @ref{Productions} or listen to what others say on @ref{Reviews}.@*
+For more information on working with LilyPond you may read about our
+@ref{Text input} or @ref{Editing}.
 @divEnd
 
 
@@ -1244,6 +1254,13 @@ Such as the ones on @ref{editing-text-editors}. Link there? Copy items? Create m
 @divEnd
 
 @contactUsAbout{appliances}	
+
+@divClass{column-center-bottom}
+@subheading Where now?
+
+Listen to what others say about LilyPond on @ref{Reviews} or go to
+@ref{Editing} and read about more tools using LilyPond.
+@divEnd
 
 @node Reviews
 @unnumberedsec Reviews
@@ -1548,6 +1565,7 @@ I want on the page, especially when it isn't "standard" practice.}
 
 @divClass{column-center-bottom}
 @subheading Where now?
-
-Read about our @ref{Text input}.
+Now you're ready to @ref{Download} LilyPond and start having fun.
+If you like you can see some @ref{Examples} first or get an overview
+on the @ref{Features} page.
 @divEnd
