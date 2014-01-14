@@ -93,6 +93,7 @@ concentrate on @emph{playing} music instead of @emph{reading} it.
 * Productions::                 Real-life use of LilyPond.
 * Reviews::                     What do people say about it?
 * Text input::                  You write music as text?!
+* Editing::                     Editing and compiling input files.
 * Easier editing::              Other ways of working with LilyPond.
 @end menu
 @divEnd
@@ -1158,11 +1159,10 @@ engraved sheet music; creating a Graphical User Interface (GUI)
 would distract us from this goal.  However, there are other
 projects aimed at making it easier to create LilyPond input files.
 
-Some editing environments include syntax highlighting, automatic
-command completion, and pre-made templates.  Other programs
-actually provide a GUI which allows direct manipulation of a
-graphical score.  For more information, see @ref{Easier editing}.
-
+While it is possible to use @emph{any} text editor for working
+with LilyPond files it is usually better to benefit from
+dedicated programs that offer special features.  You will find
+a list of such editing environments on @ref{Easier editing}.
 
 
 @divClass{column-center-bottom}
@@ -1170,6 +1170,80 @@ graphical score.  For more information, see @ref{Easier editing}.
 
 You are now ready to @ref{Download, Download LilyPond}.  Still not
 convinced?  Read about @ref{Easier editing}.
+
+@divEnd
+
+@node Editing
+@unnumberedsec Editing
+
+@c This is just a stub for enabling the text on "Text input"
+
+@divClass{column-center-top}
+@subheading Editing and compiling
+
+By now you have read that LilyPond @emph{compiles} text files
+and that it in some respect resembles a programming language.
+But if you don't have a clear idea yet how this all fits together
+and how you actually @emph{work} with these text files you may
+find the information on this page useful.
+
+@divEnd
+
+@divClass{column-center-top}
+
+@subheading How the tools work together
+
+@c add graphic displaying the editor-lilypond-output relation
+
+LilyPond isn't one monolithic program as you may be used
+from graphical notation tools.  Instead it is a system with
+several independent parts.  This may seem irritating at first,
+but it allows you to choose from an array of tools for the
+different parts of the workflow: entering, editing, graphically
+generating, and viewing a score.
+
+The core component is LilyPond itself, a command line tool
+that takes one or more text files as its input and compiles
+them to a score in one of several output formats.  The most
+common formats are PDF and PNG files, but there is a variety
+of other options, including MIDI.
+
+The input files can be produced and edited with @emph{any}
+editor that is capable of editing plain text files.  While it
+can be cumbersome to edit LilyPond input with a bare text
+editor there are fortunately a number of tools that actively
+support you in working with LilyPond files.
+
+@divEnd
+
+@divClass{column-center-top}
+
+@subheading Editors and IDEs
+
+@imageClickable{frescobaldi-lilypond-editor-small,png,
+  (click to enlarge),frescobaldi-lilypond-editor,png,right}
+
+There are several dedicated editors for LilyPond, as well as
+add-ons providing LilyPond support in other, existing editors.
+The basic feature most "programming editors" share is @emph{
+syntax highlighting}: the structure of the input file is made
+visible by highlighting keywords, variables, comments and maybe
+errors through typographic means.  Another common tool is
+automatic command completion that helps you remembering
+the available commands and reduces misspelling errors at the
+same time.
+
+While these are quite basic tools some programs offer you a
+complete editing environment for working with LilyPond score.
+They may include templates and entry palettes, may support
+MIDI input, provide music tools like transposition, or even
+offer tools for graphical score manipulation or entry.
+Finally there are some independent programs that can export
+LilyPond input files and/or use LilyPond's input language as
+their storage format.
+
+For more information and a list of available programs
+see @ref{Easier editing}.
 
 @divEnd
 
