@@ -1149,15 +1149,18 @@ Ben Lemon, a LilyPond user, has created a range of
 on his blog and which are aimed at new users.
 
 
-@subsubheading Easier editing environments
+@subsubheading Editing and compiling
 
 @imageClickable{lilykde-screenshot-small,png,
   (click to enlarge),lilykde-screenshot,png,right}
 
-LilyPond is primarily concerned with producing top-quality
-engraved sheet music; creating a Graphical User Interface (GUI)
-would distract us from this goal.  However, there are other
-projects aimed at making it easier to create LilyPond input files.
+As said at the top of this page LilyPond is "only" a
+@emph{compiler}.  We are primarily concerned with producing
+top-quality engraved sheet music; creating a Graphical User
+Interface (GUI) would distract us from this goal.  Therefore
+you need a second program -- an @emph{editor} -- to work with
+LilyPond input files.  We describe the concept of @emph{editing
+and compiling} in some more detail in @ref{Editing}.  
 
 While it is possible to use @emph{any} text editor for working
 with LilyPond files it is usually better to benefit from
@@ -1169,7 +1172,7 @@ a list of such editing environments on @ref{Easier editing}.
 @subheading Where now?
 
 You are now ready to @ref{Download, Download LilyPond}.  Still not
-convinced?  Read about @ref{Easier editing}.
+convinced?  Read about @ref{Editing}.
 
 @divEnd
 
@@ -1179,7 +1182,7 @@ convinced?  Read about @ref{Easier editing}.
 @c This is just a stub for enabling the text on "Text input"
 
 @divClass{column-center-top}
-@subheading Editing and compiling
+@subheading Editing and compiling LilyPond files
 
 By now you have read that LilyPond @emph{compiles} text files
 and that it in some respect resembles a programming language.
@@ -1247,6 +1250,13 @@ see @ref{Easier editing}.
 
 @divEnd
 
+@divClass{column-center-bottom}
+@subheading Where now?
+
+You are now ready to @ref{Download, Download LilyPond}.  Still not
+convinced?  Read about @ref{Easier editing}.
+
+@divEnd
 
 @node Easier editing
 @unnumberedsec Easier editing
