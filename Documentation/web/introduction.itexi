@@ -74,7 +74,10 @@ concentrate on @emph{playing} music instead of @emph{reading} it.
 @ref{Text input}: You write music as @emph{text}?!
 
 @item
-@ref{Easier editing}: Other ways of working with LilyPond.
+@ref{Editing}: How do you work with these text files?!
+
+@item
+@ref{Easier editing}: Environments to use LilyPond.
 
 @end itemize
 @divEnd
