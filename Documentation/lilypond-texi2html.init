@@ -1528,7 +1528,7 @@ sub generate_ly_toc_entries($$$$$)
   # color indices for the second navigation bar on the website
   if ($web_manual) {
       my %color_maps = (
-	  'introduction' => [2, 2, 2, 2, 3, 3, 4, 4],
+	  'introduction' => [2, 2, 2, 2, 3, 3, 4, 4, 4],
 	  'download' => [2, 2, 2, 3, 3, 4],
 	  'manuals' => [1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4],
 	  'community' => [1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4],
