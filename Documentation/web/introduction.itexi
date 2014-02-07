@@ -1193,8 +1193,9 @@ find the information on this page useful.
 
 @subheading How the tools work together
 
-@c add graphic displaying the editor-lilypond-output relation
-
+@imageClickable{lilypond-flow-small,png,
+  (click to enlarge),lilypond-flow,png,right}
+  
 LilyPond isn't one monolithic program as you may be used
 from graphical notation tools.  Instead it is a system with
 several independent parts.  This may seem irritating at first,
