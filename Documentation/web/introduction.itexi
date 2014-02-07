@@ -1151,9 +1151,6 @@ on his blog and which are aimed at new users.
 
 @subsubheading Editing and compiling
 
-@imageClickable{lilykde-screenshot-small,png,
-  (click to enlarge),lilykde-screenshot,png,right}
-
 As said at the top of this page LilyPond is "only" a
 @emph{compiler}.  We are primarily concerned with producing
 top-quality engraved sheet music; creating a Graphical User
