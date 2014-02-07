@@ -1160,7 +1160,7 @@ top-quality engraved sheet music; creating a Graphical User
 Interface (GUI) would distract us from this goal.  Therefore
 you need a second program -- an @emph{editor} -- to work with
 LilyPond input files.  We describe the concept of @emph{editing
-and compiling} in some more detail in @ref{Editing}.  
+and compiling} in some more detail in @ref{Editing}.
 
 While it is possible to use @emph{any} text editor for working
 with LilyPond files it is usually better to benefit from
@@ -1198,7 +1198,7 @@ find the information on this page useful.
 
 @imageClickable{lilypond-flow-small,png,
   (click to enlarge),lilypond-flow,png,right}
-  
+
 LilyPond isn't one monolithic program as you may be used
 from graphical notation tools.  Instead it is a system with
 several independent parts.  This may seem irritating at first,
