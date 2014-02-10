@@ -1080,6 +1080,7 @@ ensures that all such characters appear in all output formats.
 * Books::
 * Section organization::
 * Checking cross-references::
+* Adding/using images::
 * General writing::
 * Technical writing style::
 @end menu
@@ -1300,6 +1301,19 @@ might not accurately reflect the current state of the docs.
 @uref{http://kainhofer.com/~lilypond/linkdoc/}
 @end example
 
+@node Using images
+@subsection Using/adding images
+
+Images are referenced through a number of commands like
+@code{@@imageFloat}.  Please refer to the existing material for
+examples (as there currently isn't the time to describe
+this in detail here).  Please note: If you want to add
+new images to the documentation or website they have to
+be present in the @var{Documentation/pictures} directory,
+and your patch must add them to the Git repository.
+Otherwise @code{make doc} will fail.  If you want to make
+an image available for the website it has also to be
+present in the @ref{lilypond-extra} repository.
 
 @node General writing
 @subsection General writing

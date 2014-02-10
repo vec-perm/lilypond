@@ -46,6 +46,17 @@ from @file{.bib} files; formatting is done automatically by
 @file{texi-web.bst}.
 
 @item
+If you want to add new images to the website you will have to add
+them to the @ref{lilypond-extra}.  There is a @var{pictures}
+directory where images to be used on the website are located, and
+a @var{pictures-src} directory where you can place source files
+that may be used to generate updated or translated versions of
+images.  Note that any images have to be present twice: in
+@var{lilypond-extra} for use in the website and in
+@var{Documentation/pictures} for use in the manuals, see
+@ref{Using images}.
+
+@item
 @dots{}
 
 @item
