@@ -158,9 +158,6 @@ Beaming_pattern::beamify (Beaming_options const &options)
     }
 
   // Set the count on each side of the stem
-  // We need to run this code twice to make both the
-  // left and the right counts work properly
-  for (int i = 0; i < 2; i++)
     for (vsize i = 1; i < infos_.size () - 1; i++)
       {
         Direction non_flag_dir = -flag_directions[i];
