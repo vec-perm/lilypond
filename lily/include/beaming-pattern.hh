@@ -80,7 +80,7 @@ public:
   Beaming_pattern *split_pattern (int idx);
 
 private:
-  vector<Beam_rhythmic_element> infos_;
+  vector<Beam_rhythmic_element> stems_;
   Direction flag_direction (vsize i,
                             Drul_array<int>& beam_counts,
                             bool strict_beat_beaming) const;

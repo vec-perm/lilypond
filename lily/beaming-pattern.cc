@@ -82,7 +82,7 @@ Beam_rhythmic_element::count (Direction d) const
   Finds the appropriate direction for  If
   the stem has no more flags than either of its neighbours, this returns
   CENTER.
-  Do not call this with 0 or infos_.size ()!
+  Do not call this with 0 or stems_.size ()!
 */
 Direction
 Beaming_pattern::flag_direction (vsize i,
@@ -90,8 +90,8 @@ Beaming_pattern::flag_direction (vsize i,
                                  bool strict_beat_beaming) const
 {
 
-  if (infos_[i - 1].count (RIGHT) >= beam_counts[LEFT] &&
-      infos_[i + 1].count (LEFT) >= beam_counts[RIGHT])
+  if (stems_[i - 1].count (RIGHT) >= beam_counts[LEFT] &&
+      stems_[i + 1].count (LEFT) >= beam_counts[RIGHT])
     // No neighbor has more beams
     return CENTER;
 
@@ -99,27 +99,27 @@ Beaming_pattern::flag_direction (vsize i,
     {
       // Try to avoid sticking-out flags as much as possible by pointing
       // my flags at the neighbor with the most flags.
-      if (infos_[i - 1].count (RIGHT) > infos_[i + 1].count (LEFT))
+      if (stems_[i - 1].count (RIGHT) > stems_[i + 1].count (LEFT))
         return LEFT;
-      if (infos_[i - 1].count (RIGHT) < infos_[i + 1].count (LEFT))
+      if (stems_[i - 1].count (RIGHT) < stems_[i + 1].count (LEFT))
         return RIGHT;
     }
 
   //  => (strict_beat_beaming || beam_counts[RIGHT] == beam_counts[LEFT])
   // Point away from the stem with higher rhythmic_importance
   return
-    (infos_[i].rhythmic_importance_ == infos_[i + 1].rhythmic_importance_)
+    (stems_[i].rhythmic_importance_ == stems_[i + 1].rhythmic_importance_)
     ? CENTER
-    : (infos_[i].rhythmic_importance_ < infos_[i + 1].rhythmic_importance_)
+    : (stems_[i].rhythmic_importance_ < stems_[i + 1].rhythmic_importance_)
       ? RIGHT : LEFT;
 }
 
 void
 Beaming_pattern::de_grace ()
 {
-  for (vsize i = 0; i < infos_.size (); i++)
+  for (vsize i = 0; i < stems_.size (); i++)
     {
-      infos_[i].de_grace ();
+      stems_[i].de_grace ();
     }
 }
 
@@ -130,17 +130,17 @@ Beaming_pattern::de_grace ()
 void
 Beaming_pattern::beamify (Beaming_options const &options)
 {
-  if (infos_.size () <= 1)
+  if (stems_.size () <= 1)
     return;
 
   // Treat grace-d beams like normal durations for subdivided beams
-  if (options.subdivide_beams_ && infos_[0].start_moment_.grace_part_)
+  if (options.subdivide_beams_ && stems_[0].start_moment_.grace_part_)
     de_grace ();
 
   // "shift" beams in partial bars by one measure to a positive start_moment
-  if (infos_[0].start_moment_ < Moment (0))
-    for (vsize i = 0; i < infos_.size (); i++)
-      infos_[i].start_moment_ += options.measure_length_;
+  if (stems_[0].start_moment_ < Moment (0))
+    for (vsize i = 0; i < stems_.size (); i++)
+      stems_[i].start_moment_ += options.measure_length_;
 
   // If beams are subdivided we'll handle beam count surrounding
   // invisible stems individually.
@@ -154,30 +154,30 @@ Beaming_pattern::beamify (Beaming_options const &options)
 
 
   // Iterate over stems, excluding the extremals
-  for (vsize i = 1; i < infos_.size () - 1; i++)
+  for (vsize i = 1; i < stems_.size () - 1; i++)
     {
       // Initialize beam count based on duration of the current stem
-      beam_counts[LEFT] = infos_[i].beam_count_for_length_;
+      beam_counts[LEFT] = stems_[i].beam_count_for_length_;
       beam_counts[RIGHT] = beam_counts[LEFT];
 
       // Process beamlets around subdivisions
       if (options.subdivide_beams_ && find_subdivisions (i))
         {
-          if (infos_[i].subdivisions_[RIGHT])
+          if (stems_[i].subdivisions_[RIGHT])
             {
               // There is a subdivision to the right of us
               beam_counts[RIGHT] = beam_count_for_subdivision (i);
 
               // if we're at a rest and strictBeatBeaming is set
               // have beamlets stick out to the rest, otherwise suppress them
-              if (infos_[i].invisible_ && !options.strict_beat_beaming_)
-                infos_[i - 1].beam_count_drul_[RIGHT] = beam_counts[RIGHT];
+              if (stems_[i].invisible_ && !options.strict_beat_beaming_)
+                stems_[i - 1].beam_count_drul_[RIGHT] = beam_counts[RIGHT];
             }
-          if (infos_[i].subdivisions_[LEFT])
+          if (stems_[i].subdivisions_[LEFT])
             {
               // There is a subdivision to the left of us.
               // Take beam number from the previous stem
-              beam_counts[LEFT] = infos_[i - 1].count (RIGHT);
+              beam_counts[LEFT] = stems_[i - 1].count (RIGHT);
             }
 
         }
@@ -204,37 +204,37 @@ Beaming_pattern::beamify (Beaming_options const &options)
                       // If the subdivision is left of the current stem
                       // we have to fix the previous stem's beam count
                       if (flag_dir == RIGHT)
-                        infos_[i - 1].beam_count_drul_[RIGHT] = subdiv_beam_count;
+                        stems_[i - 1].beam_count_drul_[RIGHT] = subdiv_beam_count;
                 }
               else
                 // take beam count from the neighbor bot not more
                 // than appropriate for the current length
                 beam_counts[-flag_dir] = min (
-                            infos_[i - flag_dir].count (flag_dir),
-                            infos_[i].beam_count_for_length_);
+                            stems_[i - flag_dir].count (flag_dir),
+                            stems_[i].beam_count_for_length_);
             }
         }
 
       // Ensure that the next stem can handle its left side properly
       // when the current stem is invisible (issue #4739)
-      if (infos_[i].invisible_ && !options.strict_beat_beaming_)
+      if (stems_[i].invisible_ && !options.strict_beat_beaming_)
           beam_counts[RIGHT] = beam_counts[LEFT];
 
       // Apply beam counts, ensuring at least one beam is left
-      infos_[i].beam_count_drul_[LEFT] = max (1, beam_counts[LEFT]);
-      infos_[i].beam_count_drul_[RIGHT] = max (1, beam_counts[RIGHT]);
+      stems_[i].beam_count_drul_[LEFT] = max (1, beam_counts[LEFT]);
+      stems_[i].beam_count_drul_[RIGHT] = max (1, beam_counts[RIGHT]);
     }
 
     // handle rests under extremal stems
-    if (infos_[infos_.size () - 1].invisible_ && !options.strict_beat_beaming_)
+    if (stems_[stems_.size () - 1].invisible_ && !options.strict_beat_beaming_)
       {
-        infos_[infos_.size () - 1].beam_count_drul_[LEFT] = 1;
-        infos_[infos_.size () - 2].beam_count_drul_[RIGHT] = 1;
+        stems_[stems_.size () - 1].beam_count_drul_[LEFT] = 1;
+        stems_[stems_.size () - 2].beam_count_drul_[RIGHT] = 1;
       }
-    if (infos_[0].invisible_ && !options.strict_beat_beaming_)
+    if (stems_[0].invisible_ && !options.strict_beat_beaming_)
       {
-        infos_[0].beam_count_drul_[RIGHT] = 1;
-        infos_[1].beam_count_drul_[LEFT] = 1;
+        stems_[0].beam_count_drul_[RIGHT] = 1;
+        stems_[1].beam_count_drul_[LEFT] = 1;
       }
 }
 
@@ -306,35 +306,35 @@ Beaming_pattern::find_rhythmic_importance (Beaming_options const &options)
   vsize i = 0;
 
   // Find where we are in the beat structure of the measure
-  if (infos_.size ())
-    find_location (grouping, options.base_moment_, infos_[i].start_moment_,
-                   infos_[i].factor_, &group_pos, &next_group_pos, &next_beat_pos);
+  if (stems_.size ())
+    find_location (grouping, options.base_moment_, stems_[i].start_moment_,
+                   stems_[i].factor_, &group_pos, &next_group_pos, &next_beat_pos);
 
   // Mark the importance of stems that start at a beat or a beat group.
-  while (i < infos_.size ())
+  while (i < stems_.size ())
     {
       if ((next_beat_pos > next_group_pos)
-          || (infos_[i].start_moment_ > next_beat_pos))
+          || (stems_[i].start_moment_ > next_beat_pos))
         // Find the new group ending point
-        find_location (grouping, options.base_moment_, infos_[i].start_moment_,
-                       infos_[i].factor_, &group_pos, &next_group_pos, &next_beat_pos);
+        find_location (grouping, options.base_moment_, stems_[i].start_moment_,
+                       stems_[i].factor_, &group_pos, &next_group_pos, &next_beat_pos);
       // Mark the start of this beat group
-      if (infos_[i].start_moment_ == group_pos)
-        infos_[i].rhythmic_importance_ = -2;
+      if (stems_[i].start_moment_ == group_pos)
+        stems_[i].rhythmic_importance_ = -2;
       // Work through the end of the beat group or the end of the beam
-      while (i < infos_.size () && infos_[i].start_moment_ < next_group_pos)
+      while (i < stems_.size () && stems_[i].start_moment_ < next_group_pos)
         {
           // Set the tuplet start as necessary
-          update_tuplet (infos_[i].start_moment_, infos_[i].factor_, &tuplet_start_moment);
-          Moment dt = infos_[i].start_moment_ - group_pos;
-          Rational tuplet = infos_[i].factor_;
+          update_tuplet (stems_[i].start_moment_, stems_[i].factor_, &tuplet_start_moment);
+          Moment dt = stems_[i].start_moment_ - group_pos;
+          Rational tuplet = stems_[i].factor_;
           Moment tuplet_moment (tuplet);
-          Moment tuplet_dt = infos_[i].start_moment_ - tuplet_start_moment;
+          Moment tuplet_dt = stems_[i].start_moment_ - tuplet_start_moment;
           tuplet_number = tuplet.den ();
           // set the beat end and increment the next beat
-          if (infos_[i].start_moment_ == next_beat_pos)
+          if (stems_[i].start_moment_ == next_beat_pos)
             {
-              infos_[i].rhythmic_importance_ = -1;
+              stems_[i].rhythmic_importance_ = -1;
               next_beat_pos += options.base_moment_;
             }
           // The rhythmic importance of a stem between beats depends on its fraction
@@ -345,19 +345,19 @@ Beaming_pattern::find_rhythmic_importance (Beaming_options const &options)
           Moment ratio = (tuplet_number == 1)
                          ? dt / options.base_moment_
                          : tuplet_dt / Moment (1, 8) / tuplet_moment;
-          if (infos_[i].rhythmic_importance_ >= 0)
-            infos_[i].rhythmic_importance_ = (int) ratio.den ();
+          if (stems_[i].rhythmic_importance_ >= 0)
+            stems_[i].rhythmic_importance_ = (int) ratio.den ();
 
           i++;
         }
 
-      if (i < infos_.size () && infos_[i].start_moment_ == next_beat_pos)
+      if (i < stems_.size () && stems_[i].start_moment_ == next_beat_pos)
         {
           if (tuplet_number == 1)
-            infos_[i].rhythmic_importance_ = -1;
+            stems_[i].rhythmic_importance_ = -1;
           next_beat_pos += options.base_moment_;
-          if (infos_[i].start_moment_ == next_group_pos)
-            infos_[i].rhythmic_importance_ = -2;
+          if (stems_[i].start_moment_ == next_group_pos)
+            stems_[i].rhythmic_importance_ = -2;
         }
     }
 }
@@ -370,28 +370,28 @@ Beaming_pattern::find_rhythmic_importance (Beaming_options const &options)
 void
 Beaming_pattern::unbeam_invisible_stems ()
 {
-  for (vsize i = 1; i < infos_.size (); i++)
-    if (infos_[i].invisible_)
+  for (vsize i = 1; i < stems_.size (); i++)
+    if (stems_[i].invisible_)
       {
-        int b = min (infos_[i].count (LEFT), infos_[i - 1].count (LEFT));
-        infos_[i].beam_count_drul_[LEFT] = b;
-        infos_[i].beam_count_drul_[RIGHT] = b;
+        int b = min (stems_[i].count (LEFT), stems_[i - 1].count (LEFT));
+        stems_[i].beam_count_drul_[LEFT] = b;
+        stems_[i].beam_count_drul_[RIGHT] = b;
       }
 
-  if (infos_.size () > 1)
-    for (vsize i = infos_.size () - 1; i--;)
-      if (infos_[i].invisible_)
+  if (stems_.size () > 1)
+    for (vsize i = stems_.size () - 1; i--;)
+      if (stems_[i].invisible_)
         {
-          int b = min (infos_[i].count (LEFT), infos_[i + 1].count (LEFT));
-          infos_[i].beam_count_drul_[LEFT] = b;
-          infos_[i].beam_count_drul_[RIGHT] = b;
+          int b = min (stems_[i].count (LEFT), stems_[i + 1].count (LEFT));
+          stems_[i].beam_count_drul_[LEFT] = b;
+          stems_[i].beam_count_drul_[RIGHT] = b;
         }
 }
 
 void
 Beaming_pattern::add_stem (Moment m, int b, bool invisible, Rational factor, bool tuplet_start)
 {
-  infos_.push_back (Beam_rhythmic_element (m, b, invisible, factor, tuplet_start));
+  stems_.push_back (Beam_rhythmic_element (m, b, invisible, factor, tuplet_start));
 }
 
 Beaming_pattern::Beaming_pattern ()
@@ -405,21 +405,21 @@ Beaming_pattern::Beaming_pattern ()
 bool
 Beaming_pattern::find_subdivisions (int i)
 {
-  infos_[i].subdivisions_[LEFT] = (infos_[i].rhythmic_importance_ < 0);
-  infos_[i].subdivisions_[RIGHT] = (infos_[i + 1].rhythmic_importance_ < 0);
-  return (infos_[i].subdivisions_[LEFT] || infos_[i].subdivisions_[RIGHT]);
+  stems_[i].subdivisions_[LEFT] = (stems_[i].rhythmic_importance_ < 0);
+  stems_[i].subdivisions_[RIGHT] = (stems_[i + 1].rhythmic_importance_ < 0);
+  return (stems_[i].subdivisions_[LEFT] || stems_[i].subdivisions_[RIGHT]);
 }
 
 int
 Beaming_pattern::beamlet_count (int i, Direction d) const
 {
-  return infos_.at (i).beam_count_drul_[d];
+  return stems_.at (i).beam_count_drul_[d];
 }
 
 Moment
 Beaming_pattern::start_moment (int i) const
 {
-  return infos_.at (i).start_moment_;
+  return stems_.at (i).start_moment_;
 }
 
 Moment
@@ -429,8 +429,8 @@ Beaming_pattern::end_moment (int i) const
                          beamlet_count (i, RIGHT)),
                 0);
 
-  return infos_.at (i).start_moment_
-         + infos_.at (i).factor_ * dur.get_length ();
+  return stems_.at (i).start_moment_
+         + stems_.at (i).factor_ * dur.get_length ();
 }
 
 Moment
@@ -439,25 +439,25 @@ Beaming_pattern::remaining_length (int i) const
 // The following loop isn't currently used.
 // if not needed it has to be removed before merging
   int next_rest (0);
-  for (int j = i + 1; j < infos_.size (); j++)
+  for (int j = i + 1; j < stems_.size (); j++)
     {
-      if (infos_[j].invisible_)
+      if (stems_[j].invisible_)
         {
           next_rest = j;
           break;
         }
     }
     return //(next_rest)
-          // ? infos_[next_rest].start_moment_ - infos_[i].start_moment_
+          // ? stems_[next_rest].start_moment_ - stems_[i].start_moment_
         //   :
-           end_moment (infos_.size () - 1) - infos_[i].start_moment_;
+           end_moment (stems_.size () - 1) - stems_[i].start_moment_;
 }
 
 int
 Beaming_pattern::beam_count_for_rhythmic_position (int idx) const
 {
     // Calculate number of beams representing the rhythmic position of given stem
-    return intlog2(infos_[idx].start_moment_.main_part_.den()) - 2;
+    return intlog2(stems_[idx].start_moment_.main_part_.den()) - 2;
 }
 
 int
@@ -476,7 +476,7 @@ Beaming_pattern::beam_count_for_length (Moment len) const
 int
 Beaming_pattern::beam_count_for_subdivision (vsize i) const
 {
-  return (i != infos_.size () - 2)
+  return (i != stems_.size () - 2)
          // Respect the beam count for shortened beams ...
          ? max (beam_count_for_rhythmic_position (i + 1),
                 beam_count_for_length (remaining_length (i + 1)))
@@ -487,19 +487,19 @@ Beaming_pattern::beam_count_for_subdivision (vsize i) const
 bool
 Beaming_pattern::invisibility (int i) const
 {
-  return infos_.at (i).invisible_;
+  return stems_.at (i).invisible_;
 }
 
 Rational
 Beaming_pattern::factor (int i) const
 {
-  return infos_.at (i).factor_;
+  return stems_.at (i).factor_;
 }
 
 bool
 Beaming_pattern::tuplet_start (int i) const
 {
-  return infos_.at (i).tuplet_start_;
+  return stems_.at (i).tuplet_start_;
 }
 
 /*
@@ -513,7 +513,7 @@ Beaming_pattern::split_pattern (int i)
   int count;
 
   new_pattern = new Beaming_pattern ();
-  for (vsize j = i + 1; j < infos_.size (); j++)
+  for (vsize j = i + 1; j < stems_.size (); j++)
     {
       count = max (beamlet_count (j, LEFT), beamlet_count (j, RIGHT));
       new_pattern->add_stem (start_moment (j),
@@ -522,8 +522,8 @@ Beaming_pattern::split_pattern (int i)
                              factor (j),
                              tuplet_start (j));
     }
-  for (vsize j = i + 1; j < infos_.size ();)
-    infos_.pop_back ();
+  for (vsize j = i + 1; j < stems_.size ();)
+    stems_.pop_back ();
   return (new_pattern);
 }
 
