@@ -133,7 +133,8 @@ Beaming_pattern::beamify (Beaming_options const &options)
   if (stems_.size () <= 1)
     return;
 
-  // Treat grace-d beams like normal durations for subdivided beams
+  // Treat grace-d beams like normal durations,
+  // only necessary for subdivided beams
   if (options.subdivide_beams_ && stems_[0].start_moment_.grace_part_)
     de_grace ();
 
@@ -164,22 +165,14 @@ Beaming_pattern::beamify (Beaming_options const &options)
       if (options.subdivide_beams_ && find_subdivisions (i))
         {
           if (stems_[i].subdivisions_[RIGHT])
-            {
-              // There is a subdivision to the right of us
-              beam_counts[RIGHT] = beam_count_for_subdivision (i);
-
-              // if we're at a rest and strictBeatBeaming is set
-              // have beamlets stick out to the rest, otherwise suppress them
-              if (stems_[i].invisible_ && !options.strict_beat_beaming_)
-                stems_[i - 1].beam_count_drul_[RIGHT] = beam_counts[RIGHT];
-            }
-          if (stems_[i].subdivisions_[LEFT])
+            continue;
+          else
             {
               // There is a subdivision to the left of us.
-              // Take beam number from the previous stem
-              beam_counts[LEFT] = stems_[i - 1].count (RIGHT);
+              // One beam must be left, even for beams >= 1/4.
+              beam_counts[LEFT] = max (1, beam_count_for_subdivision (i));
+              stems_[i - 1].beam_count_drul_[RIGHT] = beam_counts[LEFT];
             }
-
         }
       // Process stems not adjacent to a subdivision
       else
@@ -197,8 +190,8 @@ Beaming_pattern::beamify (Beaming_options const &options)
                     // Force a subdivision at the non-flag side
                     {
                       int subdiv_beam_count = (flag_dir == LEFT)
-                        ? beam_count_for_subdivision (i)
-                        : beam_count_for_subdivision (i - 1);
+                        ? beam_count_for_subdivision (i + 1)
+                        : beam_count_for_subdivision (i);
                       beam_counts[-flag_dir] = subdiv_beam_count;
 
                       // If the subdivision is left of the current stem
@@ -207,7 +200,7 @@ Beaming_pattern::beamify (Beaming_options const &options)
                         stems_[i - 1].beam_count_drul_[RIGHT] = subdiv_beam_count;
                 }
               else
-                // take beam count from the neighbor bot not more
+                // take beam count from the neighbour but not more
                 // than appropriate for the current length
                 beam_counts[-flag_dir] = min (
                             stems_[i - flag_dir].count (flag_dir),
@@ -220,9 +213,9 @@ Beaming_pattern::beamify (Beaming_options const &options)
       if (stems_[i].invisible_ && !options.strict_beat_beaming_)
           beam_counts[RIGHT] = beam_counts[LEFT];
 
-      // Apply beam counts, ensuring at least one beam is left
-      stems_[i].beam_count_drul_[LEFT] = max (1, beam_counts[LEFT]);
-      stems_[i].beam_count_drul_[RIGHT] = max (1, beam_counts[RIGHT]);
+      // Apply beam counts
+      stems_[i].beam_count_drul_[LEFT] = beam_counts[LEFT];
+      stems_[i].beam_count_drul_[RIGHT] = beam_counts[RIGHT];
     }
 
     // handle rests under extremal stems
@@ -467,8 +460,8 @@ Beaming_pattern::beam_count_for_length (Moment len) const
 }
 
 /*
-   Returns the number of beams the given stem should have on its right side
-   if it were the left part of a subdivision. Respects the remaining length
+   Returns the number of beams the given subdivision should have if the given
+   stem were the right part of a subdivision. Respects the remaining length
    of the stem (e.g. 1/16 <= remaining length < 1/8 returns 2).
    Note that this gives reasonable results for *any* stem, not only for those
    actually at a subdivision.
@@ -476,12 +469,8 @@ Beaming_pattern::beam_count_for_length (Moment len) const
 int
 Beaming_pattern::beam_count_for_subdivision (vsize i) const
 {
-  return (i != stems_.size () - 2)
-         // Respect the beam count for shortened beams ...
-         ? max (beam_count_for_rhythmic_position (i + 1),
-                beam_count_for_length (remaining_length (i + 1)))
-         // ... except if there's only one trailing stem
-         : beam_count_for_rhythmic_position (i + 1);
+  return max (beam_count_for_rhythmic_position (i),
+              beam_count_for_length (remaining_length (i)));
 }
 
 bool
