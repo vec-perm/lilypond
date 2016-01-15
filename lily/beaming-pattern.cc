@@ -165,7 +165,22 @@ Beaming_pattern::beamify (Beaming_options const &options)
       if (options.subdivide_beams_ && find_subdivisions (i))
         {
           if (stems_[i].subdivisions_[RIGHT])
-            continue;
+            // TODO: The behaviour of rests under beams is still buggy.
+            // Attention: it not only gives undesired results but also
+            // *wrong* output in some cases, e.g. when the second-to-next
+            // stem is a subdivision.
+//            if (stems_[i].invisible_ && !options.strict_beat_beaming_)
+//              {
+//                  printf("rest at stem %i\n", i + 1);
+//                  // TODO: fix left beams for rests before subdivisions
+//                  stems_[i - 1].beam_count_drul_[RIGHT] = max (1, beam_count_for_subdivision (i + 1));
+//                  if (stems_[i - 1].subdivisions_[LEFT])
+//                    stems_[i - 1].beam_count_drul_[RIGHT] = stems_[i - 1].beam_count_for_length_;
+//                  else
+//                    stems_[i - 1].beam_count_drul_[LEFT] = stems_[i - 1].beam_count_for_length_;
+//              }
+//            else
+              continue;
           else
             {
               // There is a subdivision to the left of us.
