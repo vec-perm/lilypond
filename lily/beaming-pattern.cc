@@ -459,12 +459,8 @@ Beaming_pattern::start_moment (int i) const
 Moment
 Beaming_pattern::end_moment (int i) const
 {
-  Duration dur (2 + max (beamlet_count (i, LEFT),
-                         beamlet_count (i, RIGHT)),
-                0);
-
-  return stems_.at (i).start_moment_
-         + stems_.at (i).factor_ * dur.get_length ();
+  return stems_.at (i).start_moment_ +
+         stems_.at (i).factor_ * stems_.at (i).length_;
 }
 
 Moment
@@ -476,9 +472,7 @@ Beaming_pattern::length (int i) const
 Moment
 Beaming_pattern::remaining_length (int i) const
 {
-  return start_moment (stems_.size () - 1) +
-         length (stems_.size () - 1) -
-         stems_[i].start_moment_;
+  return end_moment (stems_.size () - 1) - start_moment (i);
 }
 
 int
