@@ -698,6 +698,7 @@ automatically when an output definition (a @code{\\score} or
   markFormatter = #format-mark-letters
   rehearsalMark = #1
   subdivideBeams = ##f
+  subdivideAtStrictBeatBeaming = ##t
   extraNatural = ##t
   autoAccidentals = #`(Staff ,(make-accidental-rule 'same-octave 0))
   autoCautionaries = #'()

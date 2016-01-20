@@ -29,6 +29,7 @@ struct Beaming_options
   SCM grouping_;
   bool subdivide_beams_;
   bool strict_beat_beaming_;
+  bool subdivide_at_strict_beat_beaming_;
   Moment base_moment_;
   Moment measure_length_;
 
@@ -47,6 +48,9 @@ struct Beam_rhythmic_element
   Rational factor_;
 
   bool tuplet_start_;
+
+  int beam_count_for_length_;
+  Drul_array<bool> subdivisions_;
 
   Beam_rhythmic_element (Moment, int, bool, Rational, bool);
   Beam_rhythmic_element ();
@@ -77,12 +81,16 @@ public:
 
 private:
   vector<Beam_rhythmic_element> infos_;
-  Direction flag_direction (Beaming_options const &, vsize) const;
+  Direction flag_direction (vsize i,
+                            Drul_array<int>& beam_counts,
+                            bool strict_beat_beaming) const;
   void find_rhythmic_importance (Beaming_options const &);
   void unbeam_invisible_stems ();
+  bool find_subdivisions (int i);
   Moment remaining_length (int idx) const;
   int beam_count_for_rhythmic_position (int idx) const;
   int beam_count_for_length (Moment len) const;
+  int beam_count_for_subdivision (vsize i) const;
 };
 
 #endif /* BEAMING_PATTERN_HH */
