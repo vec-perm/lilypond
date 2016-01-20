@@ -218,11 +218,35 @@ Beaming_pattern::beamify (Beaming_options const &options)
       stems_[i].beam_count_drul_[RIGHT] = beam_counts[RIGHT];
     }
 
-    // handle rests under extremal stems
-    if (stems_[stems_.size () - 1].invisible_ && !options.strict_beat_beaming_)
+    fix_extremal_stems (options);
+}
+
+/*
+  Apply special treatment to the first and last stems
+  which could not be done within the loop.
+*/
+void
+Beaming_pattern::fix_extremal_stems (Beaming_options const &options)
+{
+    // Special treatment for extremal stems
+    vsize last = stems_.size () - 1;
+
+    // Trailing stem after subdivision
+    if (options.subdivide_beams_ && stems_[last].rhythmic_importance_ < 0)
+      stems_[last - 1].beam_count_drul_[RIGHT] =
+        beam_count_for_rhythmic_position (last);
+
+    // Leading stem before subdivision
+    if (options.subdivide_beams_ && stems_[1].rhythmic_importance_ < 0)
+      stems_[0].beam_count_drul_[RIGHT] =
+        beam_count_for_length (start_moment (1) - start_moment (0));
+
+    // Rests
+    // TODO: Discuss if having *one* beam for this is the correct solution
+    if (stems_[last].invisible_ && !options.strict_beat_beaming_)
       {
-        stems_[stems_.size () - 1].beam_count_drul_[LEFT] = 1;
-        stems_[stems_.size () - 2].beam_count_drul_[RIGHT] = 1;
+        stems_[last].beam_count_drul_[LEFT] = 1;
+        stems_[last - 1].beam_count_drul_[RIGHT] = 1;
       }
     if (stems_[0].invisible_ && !options.strict_beat_beaming_)
       {

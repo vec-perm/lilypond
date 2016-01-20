@@ -86,6 +86,7 @@ private:
                             bool strict_beat_beaming) const;
   void find_rhythmic_importance (Beaming_options const &);
   void unbeam_invisible_stems ();
+  void fix_extremal_stems (Beaming_options const &options);
   bool find_subdivisions (int i);
   Moment remaining_length (int idx) const;
   int beam_count_for_rhythmic_position (int idx) const;
