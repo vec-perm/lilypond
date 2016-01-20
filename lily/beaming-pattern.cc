@@ -77,14 +77,11 @@ Beam_rhythmic_element::count (Direction d) const
   hang below the neighbouring flags. If
   the stem has no more flags than either of its neighbours, this returns
   CENTER.
+  Do not call this with 0 or infos_.size ()!
 */
 Direction
 Beaming_pattern::flag_direction (Beaming_options const &options, vsize i) const
 {
-  // The extremal stems shouldn't be messed with, so it's appropriate to
-  // return CENTER here also.
-  if (i == 0 || i == infos_.size () - 1)
-    return CENTER;
 
   int count = infos_[i].count (LEFT); // Both directions should still be the same
   int left_count = infos_[i - 1].count (RIGHT);
@@ -143,26 +140,14 @@ Beaming_pattern::beamify (Beaming_options const &options)
 
   find_rhythmic_importance (options);
 
-  vector <Direction> flag_directions;
-  // Get the initial flag directions
-  for (vsize i = 0; i < infos_.size (); i++)
-    flag_directions.push_back (flag_direction (options, i));
-
-  // Correct flag directions for subdivision
-  for (vsize i = 1; i < infos_.size () - 1; i++)
-    {
-      if ((flag_directions[i] == CENTER) && (flag_directions[i - 1] == LEFT))
-        flag_directions[i] = RIGHT;
-      if ((flag_directions[i] == CENTER) && (flag_directions[i + 1] == RIGHT))
-        flag_directions[i] = LEFT;
-    }
-
   // Set the count on each side of the stem
     for (vsize i = 1; i < infos_.size () - 1; i++)
       {
-        Direction non_flag_dir = -flag_directions[i];
-        if (non_flag_dir)
+
+        Direction flag_dir = flag_direction (options, i);
+        if (flag_dir)
           {
+            // Only process beam count if a flag direction is set
             int count =
                 (infos_[i + 1].rhythmic_importance_ < 0 &&
                  options.subdivide_beams_)
@@ -175,14 +160,14 @@ Beaming_pattern::beamify (Beaming_options const &options)
                    : beam_count_for_rhythmic_position (i + 1)
 
                 // we're at any other stem
-                : min (min (infos_[i].count (non_flag_dir),
-                            infos_[i + non_flag_dir].count (-non_flag_dir)),
-                       infos_[i - non_flag_dir].count (non_flag_dir));
+                : min (min (infos_[i].count (-flag_dir),
+                            infos_[i - flag_dir].count (flag_dir)),
+                       infos_[i + flag_dir].count (- flag_dir));
 
             // Ensure at least one beam is left, even for groups longer than 1/8
             count = max (count, 1);
 
-            infos_[i].beam_count_drul_[non_flag_dir] = count;
+            infos_[i].beam_count_drul_[-flag_dir] = count;
           }
       }
 }
