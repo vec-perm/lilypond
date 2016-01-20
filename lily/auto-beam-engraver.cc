@@ -395,7 +395,8 @@ Auto_beam_engraver::acknowledge_stem (Grob_info info)
       return;
     }
 
-  int durlog = unsmob<Duration> (ev->get_property ("duration"))->duration_log ();
+  Duration *stem_duration = unsmob<Duration> (ev->get_property ("duration"));
+  int durlog = stem_duration->duration_log ();
 
   if (durlog <= 2)
     {
@@ -411,24 +412,21 @@ Auto_beam_engraver::acknowledge_stem (Grob_info info)
   if (!is_same_grace_state (beam_start_location_, now))
     return;
 
-  Duration *stem_duration = unsmob<Duration> (ev->get_property ("duration"));
-  Moment dur = stem_duration->get_length ();
-
-  //Moment dur = unsmob<Duration> (ev->get_property ("duration"))->get_length ();
   Moment measure_now = measure_position (context ());
   bool recheck_needed = false;
 
-  if (dur < shortest_mom_)
+  Moment length = stem_duration->get_length ();
+  if (length < shortest_mom_)
     {
       /* new shortest moment, so store it and set recheck_needed */
-      shortest_mom_ = dur;
+      shortest_mom_ = length;
       recheck_needed = true;
     }
 
   /* end should be based on shortest_mom_, begin should be
      based on current duration  */
   consider_end (measure_now, shortest_mom_);
-  consider_begin (measure_now, dur);
+  consider_begin (measure_now, length);
 
   if (!stems_)
     return;
@@ -436,6 +434,7 @@ Auto_beam_engraver::acknowledge_stem (Grob_info info)
   grouping_->add_stem (now - beam_start_moment_ + beam_start_location_,
                        durlog - 2,
                        Stem::is_invisible (stem),
+                       length,
                        stem_duration->factor (),
                        (to_boolean (stem->get_property ("tuplet-start"))));
   stems_->push_back (stem);

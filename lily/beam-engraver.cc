@@ -287,7 +287,8 @@ Beam_engraver::acknowledge_stem (Grob_info info)
 
   Duration *stem_duration = unsmob<Duration> (ev->get_property ("duration"));
   int durlog = stem_duration->duration_log ();
-  //int durlog = unsmob<Duration> (ev->get_property ("duration"))->duration_log ();
+  Moment length = stem_duration->get_length ();
+
   if (durlog <= 2)
     {
       ev->origin ()->warning (_ ("stem does not fit in beam"));
@@ -307,6 +308,7 @@ Beam_engraver::acknowledge_stem (Grob_info info)
   beam_info_->add_stem (stem_location,
                         max (durlog - 2, 0),
                         Stem::is_invisible (stem),
+                        length,
                         stem_duration->factor (),
                         (to_boolean (stem->get_property ("tuplet-start"))));
   Beam::add_stem (beam_, stem);

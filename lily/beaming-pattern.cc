@@ -48,9 +48,11 @@ Beam_rhythmic_element::Beam_rhythmic_element ()
 }
 
 Beam_rhythmic_element::Beam_rhythmic_element (Moment m, int i, bool inv,
+                                              Moment length,
                                               Rational factor, bool tuplet_start)
 {
   start_moment_ = m;
+  length_ = length;
   rhythmic_importance_ = 0;
   beam_count_drul_[LEFT] = i;
   beam_count_drul_[RIGHT] = i;
@@ -421,9 +423,9 @@ Beaming_pattern::unbeam_invisible_stems ()
 }
 
 void
-Beaming_pattern::add_stem (Moment m, int b, bool invisible, Rational factor, bool tuplet_start)
+Beaming_pattern::add_stem (Moment m, int b, bool invisible, Moment length, Rational factor, bool tuplet_start)
 {
-  stems_.push_back (Beam_rhythmic_element (m, b, invisible, factor, tuplet_start));
+  stems_.push_back (Beam_rhythmic_element (m, b, invisible, length, factor, tuplet_start));
 }
 
 Beaming_pattern::Beaming_pattern ()
@@ -466,23 +468,17 @@ Beaming_pattern::end_moment (int i) const
 }
 
 Moment
+Beaming_pattern::length (int i) const
+{
+   return stems_.at (i).length_;
+}
+
+Moment
 Beaming_pattern::remaining_length (int i) const
 {
-// The following loop isn't currently used.
-// if not needed it has to be removed before merging
-  int next_rest (0);
-  for (int j = i + 1; j < stems_.size (); j++)
-    {
-      if (stems_[j].invisible_)
-        {
-          next_rest = j;
-          break;
-        }
-    }
-    return //(next_rest)
-          // ? stems_[next_rest].start_moment_ - stems_[i].start_moment_
-        //   :
-           end_moment (stems_.size () - 1) - stems_[i].start_moment_;
+  return start_moment (stems_.size () - 1) +
+         length (stems_.size () - 1) -
+         stems_[i].start_moment_;
 }
 
 int
@@ -561,6 +557,7 @@ Beaming_pattern::split_pattern (int i)
       new_pattern->add_stem (start_moment (j),
                              count,
                              invisibility (j),
+                             length (j),
                              factor (j),
                              tuplet_start (j));
     }
