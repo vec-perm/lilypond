@@ -185,7 +185,7 @@ Beaming_pattern::beamify (Beaming_options const &options)
             {
               // There is a subdivision to the left of us.
               // One beam must be left, even for beams >= 1/4.
-              beam_counts[LEFT] = max (1, beam_count_for_subdivision (i));
+              beam_counts[LEFT] = max (1, beam_count_for_subdivision (i, options));
               stems_[i - 1].beam_count_drul_[RIGHT] = beam_counts[LEFT];
             }
         }
@@ -205,8 +205,8 @@ Beaming_pattern::beamify (Beaming_options const &options)
                     // Force a subdivision at the non-flag side
                     {
                       int subdiv_beam_count = (flag_dir == LEFT)
-                        ? beam_count_for_subdivision (i + 1)
-                        : beam_count_for_subdivision (i);
+                        ? beam_count_for_subdivision (i + 1, options)
+                        : beam_count_for_subdivision (i, options);
                       beam_counts[-flag_dir] = subdiv_beam_count;
 
                       // If the subdivision is left of the current stem
@@ -500,16 +500,30 @@ Beaming_pattern::beam_count_for_length (Moment len) const
 
 /*
    Returns the number of beams the given subdivision should have if the given
-   stem were the right part of a subdivision. Respects the remaining length
-   of the stem (e.g. 1/16 <= remaining length < 1/8 returns 2).
+   stem were the right part of a subdivision.
+   Default behaviour is to return the number of beams corresponding the the
+   metric value of the subdivision (respecting the remaining length
+   of the beam (e.g. 1/16 <= remaining length < 1/8 returns 2)).
+   Setting
    Note that this gives reasonable results for *any* stem, not only for those
    actually at a subdivision.
 */
 int
-Beaming_pattern::beam_count_for_subdivision (vsize i) const
+Beaming_pattern::beam_count_for_subdivision (vsize i, Beaming_options const &options) const
 {
-  return max (beam_count_for_rhythmic_position (i),
-              beam_count_for_length (remaining_length (i)));
+  switch (options.subdivided_beam_count_) {
+    case METRIC: // default
+      return (options.subdivided_beam_add_for_remaining_length_)
+        ? max (beam_count_for_rhythmic_position (i),
+               beam_count_for_length (remaining_length (i)))
+        : beam_count_for_rhythmic_position (i);
+    case ONE:
+      return 1;
+    case BASE_MOMENT:
+      return (beam_count_for_rhythmic_position (i) <= 0)
+        ? 1
+        : beam_count_for_length (options.base_moment_);
+  }
 }
 
 bool
@@ -560,6 +574,15 @@ Beaming_options::from_context (Context *context)
 {
   grouping_ = context->get_property ("beatStructure");
   subdivide_beams_ = to_boolean (context->get_property ("subdivideBeams"));
+  SCM subdivided_beam_count = context->get_property ("subdividedBeamCount");
+  subdivided_beam_count_ =
+    (scm_is_eq (subdivided_beam_count, ly_symbol2scm ("metric")))
+    ? METRIC
+    : (scm_is_eq (subdivided_beam_count, ly_symbol2scm ("one")))
+      ? ONE
+      : BASE_MOMENT; // property: "base-moment"
+  subdivided_beam_add_for_remaining_length_ = to_boolean (context->get_property
+    ("subdividedBeamCountAddForShortenedBeam"));
   strict_beat_beaming_ = to_boolean (context->get_property ("strictBeatBeaming"));
   subdivide_at_strict_beat_beaming_ = to_boolean (context->get_property
                                                    ("subdivideAtStrictBeatBeaming"));
@@ -571,8 +594,10 @@ Beaming_options::from_context (Context *context)
 
 Beaming_options::Beaming_options ()
 {
-//  grouping_ = SCM_EOL;
-//  subdivide_beams_ = false;
-//  strict_beat_beaming_ = false;
-//  subdivide_at_strict_beat_beaming_ = true;
+  grouping_ = SCM_EOL;
+  subdivide_beams_ = false;
+  subdivided_beam_count_ = METRIC;
+  subdivided_beam_add_for_remaining_length_ = false;
+  strict_beat_beaming_ = false;
+  subdivide_at_strict_beat_beaming_ = true;
 }

@@ -24,11 +24,15 @@
 #include "moment.hh"
 #include "lily-proto.hh"
 
+enum Subdiv_beam_count { METRIC, ONE, BASE_MOMENT };
+
 struct Beaming_options
 {
   SCM grouping_;
   bool subdivide_beams_;
   bool strict_beat_beaming_;
+  Subdiv_beam_count subdivided_beam_count_;
+  bool subdivided_beam_add_for_remaining_length_;
   bool subdivide_at_strict_beat_beaming_;
   Moment base_moment_;
   Moment measure_length_;
@@ -91,7 +95,7 @@ private:
   Moment remaining_length (int idx) const;
   int beam_count_for_rhythmic_position (int idx) const;
   int beam_count_for_length (Moment len) const;
-  int beam_count_for_subdivision (vsize i) const;
+  int beam_count_for_subdivision (vsize i, Beaming_options const &options) const;
 };
 
 #endif /* BEAMING_PATTERN_HH */
