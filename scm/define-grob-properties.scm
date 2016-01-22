@@ -1074,6 +1074,8 @@ through flag on.")
      (style ,symbol? "This setting determines in what style a grob is
 typeset.  Valid choices depend on the @code{stencil} callback reading
 this property.")
+     (subdivide-details ,list? "An alist for setting properties controlling
+the behaviour at beam subdivisions.")
 
 
 ;;;

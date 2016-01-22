@@ -698,7 +698,6 @@ automatically when an output definition (a @code{\\score} or
   markFormatter = #format-mark-letters
   rehearsalMark = #1
   subdivideBeams = ##f
-  subdividedBeamCount = #'metric
   subdividedBeamCountAddForShortenedBeam = ##f
   subdivideAtStrictBeatBeaming = ##t
   extraNatural = ##t

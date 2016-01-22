@@ -31,7 +31,9 @@ struct Beaming_options
   SCM grouping_;
   bool subdivide_beams_;
   bool strict_beat_beaming_;
-  Subdiv_beam_count subdivided_beam_count_;
+  SCM subdivide_details_;
+  // Beam.subdivide-details properties
+  Subdiv_beam_count subdivide_beam_count_;
   bool subdivided_beam_add_for_remaining_length_;
   bool subdivide_at_strict_beat_beaming_;
   Moment base_moment_;
@@ -39,6 +41,7 @@ struct Beaming_options
 
   Beaming_options ();
   void from_context (Context *);
+  void set_subdivide_details (SCM const &details);
 };
 
 struct Beam_rhythmic_element

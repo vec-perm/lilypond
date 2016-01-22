@@ -19,9 +19,6 @@
 
 (define-public all-translation-properties '())
 
-(define (subdivided-beam-count-strategy? value)
-  (member value '(metric one base-moment)))
-
 (define (translator-property-description symbol type? description)
   (if (not (and
             (symbol? symbol)
@@ -603,11 +600,6 @@ of the setting of @code{subdivideBeams} and @{baseMoment}. Default is
 @code{##t}.")
      (subdivideBeams ,boolean? "If set, multiple beams will be
 subdivided at @code{baseMoment} positions by only drawing one beam over the beat.")
-     (subdividedBeamCount ,subdivided-beam-count-strategy? "Governs the way the number of beams in a
-subdivision is calculated. If set to @code{metric} (default) the beam count will
-represent the metric position, if set to @code{one} there will always be one beam
-(old behaviour), and if set to @code{base-moment} all subdivisions will have the
-beams corresponding to the subdivision's rhythmic value.")
      (subdividedBeamCountAddForShortenedBeam ,boolean? "If set (default) and
 @code{subdividedBeamCount} is set to @code{#'metric} the beam count at
 subdivisions is increased to correspond to the remaining length of the beam.

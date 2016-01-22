@@ -19,6 +19,7 @@
 
 #include "context.hh"
 #include "beaming-pattern.hh"
+#include "grob-properties.hh"
 #include "misc.hh"
 
 /*
@@ -501,7 +502,7 @@ Beaming_pattern::beam_count_for_length (Moment len) const
 int
 Beaming_pattern::beam_count_for_subdivision (vsize i, Beaming_options const &options) const
 {
-  switch (options.subdivided_beam_count_) {
+  switch (options.subdivide_beam_count_) {
     case METRIC: // default
       return (options.subdivided_beam_add_for_remaining_length_)
         ? max (beam_count_for_rhythmic_position (i),
@@ -565,13 +566,6 @@ Beaming_options::from_context (Context *context)
 {
   grouping_ = context->get_property ("beatStructure");
   subdivide_beams_ = to_boolean (context->get_property ("subdivideBeams"));
-  SCM subdivided_beam_count = context->get_property ("subdividedBeamCount");
-  subdivided_beam_count_ =
-    (scm_is_eq (subdivided_beam_count, ly_symbol2scm ("metric")))
-    ? METRIC
-    : (scm_is_eq (subdivided_beam_count, ly_symbol2scm ("one")))
-      ? ONE
-      : BASE_MOMENT; // property: "base-moment"
   subdivided_beam_add_for_remaining_length_ = to_boolean (context->get_property
     ("subdividedBeamCountAddForShortenedBeam"));
   strict_beat_beaming_ = to_boolean (context->get_property ("strictBeatBeaming"));
@@ -581,13 +575,38 @@ Beaming_options::from_context (Context *context)
                                     Moment (1, 4));
   measure_length_ = robust_scm2moment (context->get_property ("measureLength"),
                                        Moment (4, 4));
+
+  // Retrieve additional info from the grob properties
+  SCM grob_properties = Grob_property_info (context,
+                                            ly_symbol2scm ("Beam")).updated ();
+    if (subdivide_beams_)
+      set_subdivide_details (scm_assq_ref (grob_properties,
+                             ly_symbol2scm ("subdivide-details")));
+
+
+}
+
+/*
+  Set additional beaming options from Beam's subdivide-details property.
+  Note that this is only called when subdivideBeams is set.
+*/
+void
+Beaming_options::set_subdivide_details (SCM const &details)
+{
+  SCM beam_count = scm_assq_ref (details, ly_symbol2scm ("beam-count"));
+  subdivide_beam_count_ =
+    (scm_is_eq (beam_count, ly_symbol2scm ("base-moment")))
+      ? BASE_MOMENT
+      : (scm_is_eq (beam_count, ly_symbol2scm ("one")))
+        ? ONE
+        : METRIC; // fallthrough default
 }
 
 Beaming_options::Beaming_options ()
 {
   grouping_ = SCM_EOL;
   subdivide_beams_ = false;
-  subdivided_beam_count_ = METRIC;
+  subdivide_beam_count_ = METRIC;
   subdivided_beam_add_for_remaining_length_ = false;
   strict_beat_beaming_ = false;
   subdivide_at_strict_beat_beaming_ = true;
