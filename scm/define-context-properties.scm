@@ -594,17 +594,8 @@ of the pitches of each string (starting with the lowest numbered
 one).")
      (strokeFingerOrientations ,list? "See
 @code{fingeringOrientations}.")
-     (subdivideAtStrictBeatBeaming ,boolean? "Treat the opposite side of a
-strict beat beamlet (see @code{strictBeatBeaming}) as a subdivision, regardless
-of the setting of @code{subdivideBeams} and @{baseMoment}. Default is 
-@code{##t}.")
      (subdivideBeams ,boolean? "If set, multiple beams will be
 subdivided at @code{baseMoment} positions by only drawing one beam over the beat.")
-     (subdividedBeamCountAddForShortenedBeam ,boolean? "If set (default) and
-@code{subdividedBeamCount} is set to @code{#'metric} the beam count at
-subdivisions is increased to correspond to the remaining length of the beam.
-This means that if the beam is shortened beam count at subdivisions can be
-higher.")
      (suggestAccidentals ,boolean? "If set, accidentals are typeset as
 cautionary suggestions over the note.")
      (supportNonIntegerFret ,boolean? "If set in @code{Score} the

@@ -504,7 +504,7 @@ Beaming_pattern::beam_count_for_subdivision (vsize i, Beaming_options const &opt
 {
   switch (options.subdivide_beam_count_) {
     case METRIC: // default
-      return (options.subdivided_beam_add_for_remaining_length_)
+      return (options.subdivide_beam_count_reflect_shortening_)
         ? max (beam_count_for_rhythmic_position (i),
                beam_count_for_length (remaining_length (i)))
         : beam_count_for_rhythmic_position (i);
@@ -566,11 +566,7 @@ Beaming_options::from_context (Context *context)
 {
   grouping_ = context->get_property ("beatStructure");
   subdivide_beams_ = to_boolean (context->get_property ("subdivideBeams"));
-  subdivided_beam_add_for_remaining_length_ = to_boolean (context->get_property
-    ("subdividedBeamCountAddForShortenedBeam"));
   strict_beat_beaming_ = to_boolean (context->get_property ("strictBeatBeaming"));
-  subdivide_at_strict_beat_beaming_ = to_boolean (context->get_property
-                                                   ("subdivideAtStrictBeatBeaming"));
   base_moment_ = robust_scm2moment (context->get_property ("baseMoment"),
                                     Moment (1, 4));
   measure_length_ = robust_scm2moment (context->get_property ("measureLength"),
@@ -600,6 +596,20 @@ Beaming_options::set_subdivide_details (SCM const &details)
       : (scm_is_eq (beam_count, ly_symbol2scm ("one")))
         ? ONE
         : METRIC; // fallthrough default
+
+  SCM reflect_shortening = scm_assq_ref (details,
+                                         ly_symbol2scm ("reflect-shortening"));
+  subdivide_beam_count_reflect_shortening_ = scm_is_true (reflect_shortening);
+
+  SCM at_strict_beat_beaming = scm_assq_ref (details, ly_symbol2scm ("at-strict-beat-beaming"));
+  subdivide_at_strict_beat_beaming_ =
+    (scm_is_eq (at_strict_beat_beaming, ly_symbol2scm ("simple")))
+    ? SIMPLE
+    : (scm_is_eq (at_strict_beat_beaming, ly_symbol2scm ("one")))
+      ? ONE
+      : (scm_is_eq (at_strict_beat_beaming, ly_symbol2scm ("off")))
+        ? OFF
+        : METRIC; // fallthrough default
 }
 
 Beaming_options::Beaming_options ()
@@ -607,7 +617,7 @@ Beaming_options::Beaming_options ()
   grouping_ = SCM_EOL;
   subdivide_beams_ = false;
   subdivide_beam_count_ = METRIC;
-  subdivided_beam_add_for_remaining_length_ = false;
+  subdivide_beam_count_reflect_shortening_ = false;
   strict_beat_beaming_ = false;
-  subdivide_at_strict_beat_beaming_ = true;
+  subdivide_at_strict_beat_beaming_ = METRIC;
 }

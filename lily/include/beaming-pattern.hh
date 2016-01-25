@@ -24,7 +24,7 @@
 #include "moment.hh"
 #include "lily-proto.hh"
 
-enum Subdiv_beam_count { METRIC, ONE, BASE_MOMENT };
+enum Subdivide_options { OFF, METRIC, ONE, SIMPLE, BASE_MOMENT };
 
 struct Beaming_options
 {
@@ -33,9 +33,9 @@ struct Beaming_options
   bool strict_beat_beaming_;
   SCM subdivide_details_;
   // Beam.subdivide-details properties
-  Subdiv_beam_count subdivide_beam_count_;
-  bool subdivided_beam_add_for_remaining_length_;
-  bool subdivide_at_strict_beat_beaming_;
+  Subdivide_options subdivide_beam_count_;
+  bool subdivide_beam_count_reflect_shortening_;
+  Subdivide_options subdivide_at_strict_beat_beaming_;
   Moment base_moment_;
   Moment measure_length_;
 
