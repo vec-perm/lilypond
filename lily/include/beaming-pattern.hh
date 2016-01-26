@@ -79,14 +79,14 @@ public:
   void beamify (Beaming_options const &);
   void de_grace ();
   void add_stem (Moment d, int beams, bool invisible, Moment length, Rational factor, bool tuplet_starrt);
-  int beamlet_count (int idx, Direction d) const;
-  bool invisibility (int idx) const;
-  Rational factor (int idx) const;
-  bool tuplet_start (int idx) const;
-  Moment start_moment (int idx) const;
-  Moment end_moment (int idx) const;
-  Moment length (int idx) const;
-  Beaming_pattern *split_pattern (int idx);
+  int beamlet_count (vsize idx, Direction d) const;
+  bool invisibility (vsize idx) const;
+  Rational factor (vsize idx) const;
+  bool tuplet_start (vsize idx) const;
+  Moment start_moment (vsize idx) const;
+  Moment end_moment (vsize idx) const;
+  Moment length (vsize idx) const;
+  Beaming_pattern *split_pattern (vsize idx);
 
 private:
   vector<Beam_rhythmic_element> stems_;
@@ -96,9 +96,9 @@ private:
   void find_rhythmic_importance (Beaming_options const &);
   void unbeam_invisible_stems ();
   void fix_extremal_stems (Beaming_options const &options);
-  bool find_subdivisions (int i);
-  Moment remaining_length (int idx) const;
-  int beam_count_for_rhythmic_position (int idx) const;
+  bool find_subdivisions (vsize i);
+  Moment remaining_length (vsize idx) const;
+  int beam_count_for_rhythmic_position (vsize idx) const;
   int beam_count_for_length (Moment len) const;
   int beam_count_for_subdivision (vsize i, Beaming_options const &options) const;
 };

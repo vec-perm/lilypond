@@ -438,7 +438,7 @@ Beaming_pattern::Beaming_pattern ()
   Return true if either of them evaluates to true.
 */
 bool
-Beaming_pattern::find_subdivisions (int i)
+Beaming_pattern::find_subdivisions (vsize i)
 {
   stems_[i].subdivisions_[LEFT] = (stems_[i].rhythmic_importance_ < 0);
   stems_[i].subdivisions_[RIGHT] = (stems_[i + 1].rhythmic_importance_ < 0);
@@ -446,38 +446,38 @@ Beaming_pattern::find_subdivisions (int i)
 }
 
 int
-Beaming_pattern::beamlet_count (int i, Direction d) const
+Beaming_pattern::beamlet_count (vsize i, Direction d) const
 {
   return stems_.at (i).beam_count_drul_[d];
 }
 
 Moment
-Beaming_pattern::start_moment (int i) const
+Beaming_pattern::start_moment (vsize i) const
 {
   return stems_.at (i).start_moment_;
 }
 
 Moment
-Beaming_pattern::end_moment (int i) const
+Beaming_pattern::end_moment (vsize i) const
 {
   return stems_.at (i).start_moment_ +
          stems_.at (i).factor_ * stems_.at (i).length_;
 }
 
 Moment
-Beaming_pattern::length (int i) const
+Beaming_pattern::length (vsize i) const
 {
    return stems_.at (i).length_;
 }
 
 Moment
-Beaming_pattern::remaining_length (int i) const
+Beaming_pattern::remaining_length (vsize i) const
 {
   return end_moment (stems_.size () - 1) - start_moment (i);
 }
 
 int
-Beaming_pattern::beam_count_for_rhythmic_position (int idx) const
+Beaming_pattern::beam_count_for_rhythmic_position (vsize idx) const
 {
     // Calculate number of beams representing the rhythmic position of given stem
     return intlog2(stems_[idx].start_moment_.main_part_.den()) - 2;
@@ -518,19 +518,19 @@ Beaming_pattern::beam_count_for_subdivision (vsize i, Beaming_options const &opt
 }
 
 bool
-Beaming_pattern::invisibility (int i) const
+Beaming_pattern::invisibility (vsize i) const
 {
   return stems_.at (i).invisible_;
 }
 
 Rational
-Beaming_pattern::factor (int i) const
+Beaming_pattern::factor (vsize i) const
 {
   return stems_.at (i).factor_;
 }
 
 bool
-Beaming_pattern::tuplet_start (int i) const
+Beaming_pattern::tuplet_start (vsize i) const
 {
   return stems_.at (i).tuplet_start_;
 }
@@ -540,7 +540,7 @@ Beaming_pattern::tuplet_start (int i) const
     Beaming_pattern containing the removed elements
 */
 Beaming_pattern *
-Beaming_pattern::split_pattern (int i)
+Beaming_pattern::split_pattern (vsize i)
 {
   Beaming_pattern *new_pattern = 0;
   int count;
