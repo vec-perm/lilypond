@@ -62,6 +62,21 @@ which scares away people.
 @end ignore
 
 @item
+LilyPond source files may now be embedded inside the generated PDF files.
+This experimental feature is disabled by default and may be regarded as unsafe,
+as PDF documents with hidden content tend to present a security risk.
+Please note that not all PDF viewers have the ability to handle embedded
+documents (if not, the PDF output will appear normally and source files
+will remain invisible).  This feature only works with the PDF backend.
+
+@item
+French note names are now defined specifically instead of
+being aliased to Italian note names: in addition to the
+generic Italian-derived syntax, the @var{d} pitch may be
+entered as @code{ré}.  Double sharps may also be
+entered using the @code{-x} suffix.
+
+@item
 Additional bass strings (for lute tablature) are supported.
 @lilypond[quote,verbatim]
 m = { f'4 d' a f d a, g, fis, e, d, c,  \bar "|." }
@@ -598,7 +613,7 @@ improved.  Previously, tuplet numbers were placed according to the
 position of the tuplet bracket, even if it was not printed.  This could
 lead to stranded tuplet numbers.  Now they are now positioned
 closer to the kneed-beam when an appropriate beam segment exists for its
-placement and when the the bracket is not drawn.
+placement and when the bracket is not drawn.
 
 Collision detection is also added, offsetting horizontally if too close
 to an adjoining note column but preserving the number's vertical
@@ -759,7 +774,7 @@ Four new Clef glyphs have been added @emph{Double G}, @emph{Tenor G},
   \clef "varC" c c c c
   \clef "altovarC" c c c c
   \clef "tenorvarC" c c c c
-  \clef "baritonevarC" c c c
+  \clef "baritonevarC" c c c c
   \clef "varpercussion" c c c c
 @end lilypond
 
