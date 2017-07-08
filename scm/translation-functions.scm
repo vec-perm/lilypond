@@ -167,7 +167,7 @@ way the transposition number is displayed."
               (markup
                #:general-align Y DOWN #:fontsize
                (if (not (= alt DOUBLE-SHARP))
-                   -2 2)
+                   (if (not fig-markup) 0 -2) 4) ;; changed
                (alteration->text-accidental-markup alt))
               #f))
 
@@ -183,14 +183,10 @@ way the transposition number is displayed."
           (set! fig-markup (markup #:left-align #:pad-around 0.3 alt-markup))
           (set! alt-markup #f)))
 
-
-    ;; hmm, how to get figures centered between note, and
-    ;; lone accidentals too?
-
-    ;;    (if (markup? fig-markup)
-    ;;  (set!
-    ;;   fig-markup (markup #:translate (cons 1.0 0)
-    ;;                      #:center-align fig-markup)))
+    (if (and (eqv? 0 (ly:duration-log  (ly:event-property event 'duration))) (markup? fig-markup))
+        (set!
+        fig-markup (markup #:translate (cons 1.0 0)
+                        #:center-align fig-markup)))
 
     (if alt-markup
         (set! fig-markup
@@ -199,7 +195,7 @@ way the transposition number is displayed."
                             alt-dir
                             LEFT)
                       fig-markup
-                      #:pad-x 0.2 alt-markup)))
+                      #:pad-x 0.2 #:raise (if (= alt FLAT) 0.1 -0.1) alt-markup))) ;changed
 
     (if plus-markup
         (set! fig-markup
